@@ -1,0 +1,36 @@
+{
+  "items": [
+    {
+      "slug": "depistages-par-age",
+      "title": "Les 10 dépistages à ne pas manquer selon votre âge",
+      "tag": "prévention",
+      "read_time": "6 min de lecture",
+      "updated": "Mis à jour le 26 juillet 2026",
+      "body": "La plupart des maladies chroniques graves se dépistent longtemps avant l'apparition des premiers symptômes. Pourtant, en consultation, je constate régulièrement que beaucoup de patients ignorent quels examens sont recommandés à leur âge. Voici un point clair, fondé sur les recommandations actuelles.\n\n## Avant 30 ans\n\nÀ cet âge, l'essentiel repose sur la prévention primaire : tension artérielle mesurée une fois par an, mise à jour du calendrier vaccinal, et dépistage des infections sexuellement transmissibles en cas d'exposition à risque.\n\n:::callout point clé\nUn dépistage fait au bon moment n'a de valeur que s'il est suivi d'un vrai changement ou d'un suivi. Le calendrier compte autant que l'examen lui-même.\n:::\n\n## Entre 30 et 50 ans\n\nC'est la période où le bilan lipidique et la glycémie à jeun deviennent pertinents, en particulier en présence d'antécédents familiaux. Le dépistage du cancer du col de l'utérus se poursuit selon le rythme recommandé. C'est aussi le moment d'évaluer les facteurs de risque cardiovasculaire dans leur ensemble plutôt qu'isolément.\n\n- Bilan lipidique tous les 5 ans, plus tôt en cas d'antécédents\n- Glycémie à jeun tous les 3 ans à partir de 45 ans\n- Tension artérielle à chaque consultation\n\n## Après 50 ans\n\nLe dépistage du cancer colorectal devient une priorité, tout comme celui du cancer du sein chez la femme. Chez l'homme, la question du dépistage prostatique mérite d'être discutée individuellement, car les bénéfices et les risques varient selon le profil de chacun.\n\n:::disclaimer\nCet article a une visée informative et ne remplace pas une consultation médicale. Le calendrier de dépistage doit toujours être adapté à votre histoire personnelle et familiale avec votre médecin traitant.\n:::"
+    },
+    {
+      "slug": "ia-remplace-medecin",
+      "title": "L'IA peut-elle remplacer un médecin ? Ce que dit vraiment la science",
+      "tag": "ia en santé",
+      "read_time": "8 min de lecture",
+      "updated": "Mis à jour le 20 juillet 2026",
+      "body": "L'intelligence artificielle occupe une place grandissante dans les outils médicaux, mais son rôle réel reste souvent mal compris. Voici un point sur ce que la recherche montre aujourd'hui.\n\n## Ce que l'IA fait bien\n\nDans des tâches étroites et bien définies — analyse d'images radiologiques, dépistage de la rétinopathie diabétique — certains modèles atteignent une performance comparable à des spécialistes expérimentés.\n\n## Ce qu'elle ne fait pas\n\nLa décision clinique globale reste un exercice qui combine examen, contexte de vie, incertitude et relation de confiance — des dimensions que les modèles actuels ne couvrent pas.\n\n:::disclaimer\nCet article a une visée informative et ne remplace pas une consultation médicale.\n:::"
+    },
+    {
+      "slug": "coulisses-premiere-application",
+      "title": "Dans les coulisses : comment j'ai créé ma première application médicale",
+      "tag": "mes applications",
+      "read_time": "5 min de lecture",
+      "updated": "Mis à jour le 12 juillet 2026",
+      "body": "Je raconte ici comment est née ma première application, du problème rencontré en consultation jusqu'à sa première version testée sur moi-même.\n\n## Le déclic\n\nTout est parti d'un constat simple : trop de patients arrivent en consultation sans savoir quel dépistage leur est dû.\n\n## Les premières lignes de code\n\nAucune formation formelle en développement au départ, seulement de la curiosité et beaucoup d'essais successifs."
+    },
+    {
+      "slug": "sommeil-5-habitudes",
+      "title": "Sommeil : les 5 habitudes qui changent vraiment la donne",
+      "tag": "prévention",
+      "read_time": "7 min de lecture",
+      "updated": "Mis à jour le 5 juillet 2026",
+      "body": "Le sommeil est souvent le premier levier de santé négligé en consultation. Voici les habitudes qui ont le plus d'impact selon les données actuelles.\n\n## Un horaire régulier\n\nSe coucher et se lever à heures fixes, même le week-end, améliore la qualité du sommeil plus qu'on ne le pense.\n\n:::disclaimer\nCet article a une visée informative et ne remplace pas une consultation médicale.\n:::"
+    }
+  ]
+}

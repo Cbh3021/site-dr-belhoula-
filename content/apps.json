@@ -1,0 +1,52 @@
+{
+  "items": [
+    {
+      "slug": "rappel-depistage",
+      "name_tag": "application gratuite",
+      "title": "Rappel Dépistage",
+      "card_desc": "Un calendrier personnel de prévention selon l'âge et les antécédents, avec rappels automatiques.",
+      "desc": "Un calendrier personnel de prévention généré à partir de l'âge, du sexe et des antécédents renseignés, avec des rappels avant chaque échéance. Pensé pour remplacer le carnet de notes mental que beaucoup de patients tiennent (mal) eux-mêmes.",
+      "features": [
+        "Calendrier ajusté automatiquement aux recommandations en vigueur",
+        "Rappels par notification, sans compte ni collecte de données sensibles",
+        "Export PDF à apporter en consultation"
+      ],
+      "screen_label": "rappel dépistage — aperçu",
+      "rows": [
+        { "label": "Bilan lipidique", "value": "dans 4 mois" },
+        { "label": "Frottis cervical", "value": "à jour" },
+        { "label": "Tension artérielle", "value": "aujourd'hui" },
+        { "label": "Rappel vaccinal", "value": "dans 2 mois" }
+      ],
+      "visual_style": "dark",
+      "action_primary_label": "Télécharger l'application",
+      "action_primary_url": "#",
+      "action_secondary_label": "Voir la documentation",
+      "action_secondary_url": "#"
+    },
+    {
+      "slug": "fiche-patient-express",
+      "name_tag": "outil cabinet",
+      "title": "Fiche Patient Express",
+      "card_desc": "Un outil de synthèse clinique pensé pour les consultations courtes, développé avec des confrères.",
+      "desc": "Développé avec plusieurs confrères généralistes, cet outil structure la synthèse clinique en consultation courte : motif, antécédents pertinents, conduite à tenir. Il ne remplace aucun logiciel métier, il vient en complément pour gagner du temps sur la rédaction.",
+      "features": [
+        "Modèles de synthèse adaptés aux motifs les plus fréquents en médecine générale",
+        "Fonctionne hors ligne, aucune donnée hébergée à l'extérieur du cabinet",
+        "Export compatible avec les principaux logiciels métier"
+      ],
+      "screen_label": "fiche patient express — aperçu",
+      "rows": [
+        { "label": "Motif", "value": "douleur lombaire" },
+        { "label": "Antécédents", "value": "3 pertinents" },
+        { "label": "Examen", "value": "en cours" },
+        { "label": "Conduite à tenir", "value": "3 items" }
+      ],
+      "visual_style": "coral",
+      "action_primary_label": "Demander un accès",
+      "action_primary_url": "#",
+      "action_secondary_label": "Voir la documentation",
+      "action_secondary_url": "#"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applications — Dr Hédi Belhoula</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F5F3;
+    --paper-2:#E7EDE9;
+    --ink:#0E2A2C;
+    --ink-soft:#3C5254;
+    --teal:#155A5B;
+    --teal-deep:#0B3839;
+    --coral:#DD5A3C;
+    --coral-deep:#9A3B25;
+    --border:rgba(14,42,44,0.12);
+    --border-strong:rgba(14,42,44,0.22);
+    --radius:10px;
+    --font-display:'Fraunces', serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;background:rgba(241,245,243,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10;}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);display:inline-block;flex-shrink:0;}
+  .brand-name{font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:-0.01em;line-height:1.2;}
+  .brand-sub{font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);letter-spacing:0.02em;line-height:1.3;}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{font-family:var(--font-body);font-size:14px;font-weight:500;padding:10px 18px;border-radius:var(--radius);border:1px solid var(--border-strong);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s;}
+  .btn:hover{background:var(--paper-2);}
+  .btn.primary{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .btn.primary:hover{background:var(--teal-deep);}
+  .btn:focus-visible{outline:2px solid var(--coral);outline-offset:2px;}
+
+  .hero{padding:60px 0 44px;border-bottom:1px solid var(--border);}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.06em;color:var(--coral-deep);margin:0 0 16px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--coral-deep);display:inline-block;}
+  h1{font-family:var(--font-display);font-weight:500;font-size:clamp(30px,4.5vw,42px);line-height:1.12;letter-spacing:-0.015em;margin:0 0 16px;max-width:600px;}
+  .lede{font-size:16px;color:var(--ink-soft);max-width:520px;margin:0;}
+
+  .app-detail{padding:56px 0;border-bottom:1px solid var(--border);}
+  .app-detail:last-of-type{border-bottom:none;}
+  .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
+  .app-visual{background:var(--teal-deep);border-radius:16px;min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;}
+  .app-visual.alt{background:var(--coral);}
+  .app-visual .screen-label{font-family:var(--font-mono);font-size:11px;opacity:0.7;}
+  .fake-ui{background:rgba(255,255,255,0.1);border-radius:10px;padding:16px;}
+  .fake-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:13px;}
+  .fake-row:last-child{border-bottom:none;}
+  .fake-pill{background:rgba(255,255,255,0.18);border-radius:20px;padding:3px 10px;font-size:11px;}
+
+  .app-name-tag{font-family:var(--font-mono);font-size:12px;color:var(--coral-deep);background:#FBE7E0;display:inline-block;padding:5px 11px;border-radius:6px;margin-bottom:16px;}
+  .app-detail h2{font-family:var(--font-display);font-weight:500;font-size:27px;margin:0 0 12px;letter-spacing:-0.01em;}
+  .app-detail p.desc{font-size:15px;color:var(--ink-soft);margin:0 0 24px;}
+  .feature-list{list-style:none;margin:0 0 28px;padding:0;}
+  .feature-list li{display:flex;gap:10px;font-size:14.5px;margin-bottom:12px;color:var(--ink);}
+  .feature-list li::before{content:"→";color:var(--coral);flex-shrink:0;}
+  .app-actions{display:flex;gap:10px;flex-wrap:wrap;}
+
+  .how-it-works{padding:56px 0;}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+  .step{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;}
+  .step-num{font-family:var(--font-mono);font-size:12px;color:var(--coral-deep);margin-bottom:10px;}
+  .step h3{font-size:15px;font-weight:600;margin:0 0 6px;}
+  .step p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+
+  .disclaimer-box{
+    background:var(--paper-2);border-radius:12px;padding:20px 24px;font-size:13.5px;
+    color:var(--ink-soft);margin:8px 0 56px;
+  }
+
+  .newsletter{background:var(--ink);color:#fff;border-radius:16px;padding:44px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:60px;}
+  .newsletter h2{color:#fff;font-family:var(--font-display);font-size:24px;font-weight:500;margin:0 0 8px;}
+  .newsletter p{color:rgba(255,255,255,0.65);font-size:14px;margin:0;max-width:340px;}
+  .nl-form{display:flex;gap:8px;flex-wrap:wrap;}
+  .nl-form input{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:11px 14px;color:#fff;font-family:var(--font-body);font-size:14px;width:220px;}
+  .nl-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .nl-form .btn.primary{background:var(--coral);border-color:var(--coral);}
+  .nl-form .btn.primary:hover{background:var(--coral-deep);}
+
+  footer{max-width:1080px;margin:0 auto;padding:0 28px 48px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer a{text-decoration:none;color:var(--ink-soft);}
+
+  @media (max-width:760px){
+    .nav-links{display:none;}
+    .app-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    .newsletter{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">
+      <span class="dot"></span>
+      <span>
+        <span class="brand-name" id="js-brand-name" style="display:block;">Dr Hédi Belhoula</span>
+        <span class="brand-sub" id="js-brand-sub" style="display:block;">cabinet de médecine générale</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html#piliers">Prévention</a></li>
+      <li><a href="index.html#articles">Articles</a></li>
+      <li><a href="applications.html">Applications</a></li>
+      <li><a href="index.html#newsletter">Newsletter</a></li>
+    </ul>
+    <a class="btn primary" href="index.html#newsletter">S'abonner</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow">médecin — développeur</p>
+    <h1>Des outils numériques conçus pour le soin, pas pour le marketing.</h1>
+    <p class="lede">Chaque application est née d'un problème rencontré en consultation. Elles sont pensées, testées et utilisées dans mon propre cabinet avant d'être partagées.</p>
+  </div>
+
+  <div id="js-apps-detail">
+    <!-- rempli dynamiquement depuis content/apps.json -->
+  </div>
+
+  <div class="how-it-works">
+    <p class="app-name-tag" style="background:var(--paper-2);color:var(--ink-soft);">comment ça marche</p>
+    <h2 style="font-family:var(--font-display);font-weight:500;font-size:26px;margin:16px 0 0;">De l'idée à l'usage réel en cabinet</h2>
+    <div class="steps">
+      <div class="step">
+        <p class="step-num">01</p>
+        <h3>Un problème observé</h3>
+        <p>Chaque application part d'une friction réelle rencontrée en consultation, jamais d'une idée abstraite.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">02</p>
+        <h3>Un prototype testé</h3>
+        <p>Je développe une première version que j'utilise moi-même pendant plusieurs semaines avant tout partage.</p>
+      </div>
+      <div class="step">
+        <p class="step-num">03</p>
+        <h3>Un retour de confrères</h3>
+        <p>L'outil est ensuite affiné avec d'autres médecins généralistes avant d'être rendu public.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="disclaimer-box">
+    Ces applications sont des outils d'aide à l'organisation et à l'information. Elles ne posent aucun diagnostic et ne remplacent en aucun cas une consultation médicale. Tout partenariat ou intérêt commercial lié à un outil présenté ici serait explicitement mentionné.
+  </div>
+
+  <div class="newsletter">
+    <div>
+      <h2>Être informé des prochaines applications</h2>
+      <p>Un email lors de chaque nouvelle sortie ou mise à jour majeure, rien d'autre.</p>
+    </div>
+    <form class="nl-form" onsubmit="return false;">
+      <input type="email" placeholder="votre@email.com" required>
+      <button class="btn primary" type="submit">S'abonner</button>
+    </form>
+  </div>
+
+</main>
+
+<footer>
+  <span id="js-footer-text">© 2026 Dr Hédi Belhoula — médecin généraliste</span>
+  <span><a href="#">Mentions légales</a> · <a href="#">Contact</a></span>
+</footer>
+
+<script>
+(function(){
+  function escapeHtml(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  fetch('content/site.json').then(r => r.json()).then(site => {
+    document.getElementById('js-brand-name').textContent = site.brand_name;
+    document.getElementById('js-brand-sub').textContent = site.brand_sub;
+    document.getElementById('js-footer-text').textContent = site.footer_text;
+  }).catch(function(){});
+
+  fetch('content/apps.json').then(r => r.json()).then(data => {
+    var el = document.getElementById('js-apps-detail');
+    var items = data.items || [];
+    el.innerHTML = items.map(function(app, i){
+      var reversed = i % 2 === 1;
+      var visualClass = 'app-visual' + (app.visual_style === 'coral' ? ' alt' : '');
+      var labelStyle = app.visual_style === 'coral' ? ' style="color:#fff;"' : '';
+      var rows = (app.rows || []).map(function(row){
+        return '<div class="fake-row"><span>' + escapeHtml(row.label) + '</span>' +
+          '<span class="fake-pill">' + escapeHtml(row.value) + '</span></div>';
+      }).join('');
+      var features = (app.features || []).map(function(f){
+        return '<li>' + escapeHtml(f) + '</li>';
+      }).join('');
+      var visual = '<div class="' + visualClass + '"' + (reversed ? ' style="order:1;"' : '') + '>' +
+        '<span class="screen-label"' + labelStyle + '>' + escapeHtml(app.screen_label) + '</span>' +
+        '<div class="fake-ui">' + rows + '</div></div>';
+      var info = '<div' + (reversed ? ' style="order:2;"' : '') + '>' +
+        '<span class="app-name-tag">' + escapeHtml(app.name_tag) + '</span>' +
+        '<h2 id="' + escapeHtml(app.slug) + '">' + escapeHtml(app.title) + '</h2>' +
+        '<p class="desc">' + escapeHtml(app.desc) + '</p>' +
+        '<ul class="feature-list">' + features + '</ul>' +
+        '<div class="app-actions">' +
+        '<a class="btn primary" href="' + escapeHtml(app.action_primary_url || '#') + '">' + escapeHtml(app.action_primary_label) + '</a>' +
+        '<a class="btn" href="' + escapeHtml(app.action_secondary_url || '#') + '">' + escapeHtml(app.action_secondary_label) + '</a>' +
+        '</div></div>';
+      return '<div class="app-detail"><div class="app-grid">' +
+        (reversed ? info + visual : visual + info) + '</div></div>';
+    }).join('');
+  }).catch(function(e){ console.error('Erreur de chargement de apps.json', e); });
+})();
+</script>
+
+</body>
+</html>

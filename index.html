@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Hédi Belhoula — Médecine, prévention et intelligence artificielle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F1F5F3;
+    --paper-2:#E7EDE9;
+    --ink:#0E2A2C;
+    --ink-soft:#3C5254;
+    --teal:#155A5B;
+    --teal-deep:#0B3839;
+    --coral:#DD5A3C;
+    --coral-deep:#9A3B25;
+    --border:rgba(14,42,44,0.12);
+    --border-strong:rgba(14,42,44,0.22);
+    --radius:10px;
+    --font-display:'Fraunces', serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* NAV */
+  header{position:sticky;top:0;background:rgba(241,245,243,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10;}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);display:inline-block;flex-shrink:0;}
+  .brand-name{font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:-0.01em;line-height:1.2;}
+  .brand-sub{font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);letter-spacing:0.02em;line-height:1.3;}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{
+    font-family:var(--font-body);font-size:14px;font-weight:500;
+    padding:10px 18px;border-radius:var(--radius);border:1px solid var(--border-strong);
+    background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;
+    display:inline-flex;align-items:center;gap:6px;transition:all .15s;
+  }
+  .btn:hover{background:var(--paper-2);}
+  .btn.primary{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .btn.primary:hover{background:var(--teal-deep);}
+  .btn:focus-visible{outline:2px solid var(--coral);outline-offset:2px;}
+
+  /* HERO */
+  .hero{padding:76px 0 40px;}
+  .eyebrow{
+    font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.06em;
+    color:var(--coral-deep);text-transform:lowercase;margin:0 0 18px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--coral-deep);display:inline-block;}
+  h1{
+    font-family:var(--font-display);font-weight:500;font-size:clamp(34px,5vw,52px);
+    line-height:1.08;letter-spacing:-0.015em;margin:0 0 22px;max-width:680px;
+  }
+  h1 em{font-style:italic;color:var(--teal);}
+  .lede{font-size:17px;color:var(--ink-soft);max-width:480px;margin:0 0 30px;}
+  .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:44px;}
+
+  .signature{width:100%;max-width:640px;}
+  .signature svg{width:100%;height:auto;display:block;}
+
+  /* SECTIONS */
+  section{padding:56px 0;border-top:1px solid var(--border);}
+  .section-label{
+    font-family:var(--font-mono);font-size:12.5px;color:var(--ink-soft);
+    letter-spacing:0.04em;margin:0 0 22px;
+  }
+  h2{font-family:var(--font-display);font-weight:500;font-size:26px;margin:0 0 8px;letter-spacing:-0.01em;}
+
+  /* PILIERS */
+  .piliers{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+  .pilier{
+    background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px 20px;
+    transition:border-color .15s, transform .15s;
+  }
+  .pilier:hover{border-color:var(--border-strong);transform:translateY(-2px);}
+  .pilier .icon{
+    width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;
+    font-family:var(--font-mono);font-size:14px;margin-bottom:14px;
+  }
+  .pilier:nth-child(1) .icon{background:#E1F0EC;color:var(--teal-deep);}
+  .pilier:nth-child(2) .icon{background:#FBE7E0;color:var(--coral-deep);}
+  .pilier:nth-child(3) .icon{background:#EDE9F7;color:#4A3B85;}
+  .pilier:nth-child(4) .icon{background:var(--paper-2);color:var(--ink-soft);}
+  .pilier h3{font-family:var(--font-body);font-weight:600;font-size:15px;margin:0 0 6px;}
+  .pilier p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+
+  /* ARTICLES */
+  .article-row{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    padding:20px 0;border-bottom:1px solid var(--border);text-decoration:none;color:inherit;
+  }
+  .article-row:last-child{border-bottom:none;}
+  .article-row:hover .art-title{color:var(--teal);}
+  .art-title{font-family:var(--font-display);font-size:19px;font-weight:500;margin:0 0 6px;transition:color .15s;}
+  .art-meta{font-family:var(--font-mono);font-size:12px;color:var(--ink-soft);}
+  .art-arrow{font-size:18px;color:var(--ink-soft);flex-shrink:0;}
+
+  /* APPS */
+  .apps{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .app-card{
+    background:var(--teal-deep);color:#fff;border-radius:14px;padding:26px;
+    display:flex;flex-direction:column;justify-content:space-between;min-height:190px;
+  }
+  .app-card.alt{background:#fff;color:var(--ink);border:1px solid var(--border);}
+  .app-name{font-family:var(--font-mono);font-size:13px;opacity:0.75;margin:0 0 10px;}
+  .app-title{font-family:var(--font-display);font-size:21px;font-weight:500;margin:0 0 10px;}
+  .app-desc{font-size:14px;opacity:0.85;margin:0 0 18px;}
+  .app-card.alt .app-desc{color:var(--ink-soft);opacity:1;}
+  .app-link{font-size:13.5px;font-weight:500;text-decoration:none;color:inherit;display:inline-flex;align-items:center;gap:6px;}
+
+  /* NEWSLETTER */
+  .newsletter{
+    background:var(--ink);color:#fff;border-radius:16px;padding:44px 40px;
+    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+  }
+  .newsletter h2{color:#fff;}
+  .newsletter p{color:rgba(255,255,255,0.65);font-size:14px;margin:0;max-width:340px;}
+  .nl-form{display:flex;gap:8px;flex-wrap:wrap;}
+  .nl-form input{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);
+    padding:11px 14px;color:#fff;font-family:var(--font-body);font-size:14px;width:220px;
+  }
+  .nl-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .nl-form .btn.primary{background:var(--coral);border-color:var(--coral);}
+  .nl-form .btn.primary:hover{background:var(--coral-deep);}
+
+  footer{padding:32px 0 48px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer a{text-decoration:none;color:var(--ink-soft);}
+
+  @media (max-width:760px){
+    .piliers{grid-template-columns:repeat(2,1fr);}
+    .apps{grid-template-columns:1fr;}
+    .nav-links{display:none;}
+    .newsletter{flex-direction:column;align-items:flex-start;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    html{scroll-behavior:auto;}
+    *{transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">
+      <span class="dot"></span>
+      <span>
+        <span class="brand-name" id="js-brand-name" style="display:block;">Dr Hédi Belhoula</span>
+        <span class="brand-sub" id="js-brand-sub" style="display:block;">cabinet de médecine générale</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#piliers">Prévention</a></li>
+      <li><a href="#articles">Articles</a></li>
+      <li><a href="applications.html">Applications</a></li>
+      <li><a href="#newsletter">Newsletter</a></li>
+    </ul>
+    <a class="btn primary" href="#newsletter">S'abonner</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <div class="hero">
+    <p class="eyebrow" id="js-hero-eyebrow">médecin — développeur — prévention</p>
+    <h1 id="js-hero-title">La médecine générale,<br>vue par un clinicien <em>qui code</em>.</h1>
+    <p class="lede" id="js-hero-lede">Prévention, conseils fondés sur la preuve, et un regard d'initié sur l'intelligence artificielle en santé — avec les outils que je construis pour mon propre cabinet.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#newsletter">S'abonner à la newsletter</a>
+      <a class="btn" href="#apps">Voir les applications</a>
+    </div>
+
+    <div class="signature">
+      <svg viewBox="0 0 640 90" role="img" aria-label="Ligne d'électrocardiogramme se transformant en chevrons de code">
+        <polyline points="0,45 70,45 92,15 116,75 138,45 230,45 252,28 274,62 296,45 380,45"
+          fill="none" stroke="var(--border-strong)" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
+        <text x="420" y="60" font-family="'IBM Plex Mono', monospace" font-size="40" font-weight="500" fill="var(--coral)">&lt;/&gt;</text>
+      </svg>
+    </div>
+  </div>
+
+  <section id="piliers">
+    <p class="section-label">quatre piliers</p>
+    <div class="piliers" id="js-piliers">
+      <!-- rempli dynamiquement depuis content/site.json -->
+    </div>
+  </section>
+
+  <section id="articles">
+    <p class="section-label">derniers articles</p>
+    <div id="js-articles">
+      <!-- rempli dynamiquement depuis content/articles.json -->
+    </div>
+  </section>
+
+  <section id="apps">
+    <p class="section-label">mes applications</p>
+    <div class="apps" id="js-apps">
+      <!-- rempli dynamiquement depuis content/apps.json -->
+    </div>
+  </section>
+
+  <section id="newsletter" style="border-top:none;padding-top:0;">
+    <div class="newsletter">
+      <div>
+        <h2 id="js-newsletter-title">Un article par semaine, sans bruit</h2>
+        <p id="js-newsletter-text">Prévention et santé numérique, directement dans votre boîte mail. Zéro spam, désabonnement en un clic.</p>
+      </div>
+      <form class="nl-form" onsubmit="return false;">
+        <input type="email" placeholder="votre@email.com" required>
+        <button class="btn primary" type="submit">S'abonner</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <span id="js-footer-text">© 2026 Dr Hédi Belhoula — médecin généraliste</span>
+    <span><a href="#">Mentions légales</a> · <a href="#">Contact</a></span>
+  </footer>
+
+</main>
+
+<script>
+(function(){
+  function escapeHtml(s){
+    return String(s == null ? "" : s)
+      .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+
+  fetch('content/site.json').then(r => r.json()).then(site => {
+    document.getElementById('js-brand-name').textContent = site.brand_name;
+    document.getElementById('js-brand-sub').textContent = site.brand_sub;
+    document.getElementById('js-hero-eyebrow').textContent = site.hero_eyebrow;
+    document.getElementById('js-hero-title').innerHTML =
+      escapeHtml(site.hero_title_line1) + '<br>' + escapeHtml(site.hero_title_line2) +
+      ' <em>' + escapeHtml(site.hero_title_em) + '</em>';
+    document.getElementById('js-hero-lede').textContent = site.hero_lede;
+    document.getElementById('js-newsletter-title').textContent = site.newsletter_title;
+    document.getElementById('js-newsletter-text').textContent = site.newsletter_text;
+    document.getElementById('js-footer-text').textContent = site.footer_text;
+
+    var piliersEl = document.getElementById('js-piliers');
+    piliersEl.innerHTML = (site.piliers || []).map(function(p){
+      return '<div class="pilier"><div class="icon">' + escapeHtml(p.icon) + '</div>' +
+        '<h3>' + escapeHtml(p.title) + '</h3><p>' + escapeHtml(p.text) + '</p></div>';
+    }).join('');
+  }).catch(function(e){ console.error('Erreur de chargement de site.json', e); });
+
+  fetch('content/articles.json').then(r => r.json()).then(data => {
+    var el = document.getElementById('js-articles');
+    var items = data.items || [];
+    el.innerHTML = items.map(function(a){
+      return '<a class="article-row" href="article.html?slug=' + encodeURIComponent(a.slug) + '">' +
+        '<div><p class="art-title">' + escapeHtml(a.title) + '</p>' +
+        '<p class="art-meta">' + escapeHtml(a.tag) + ' · ' + escapeHtml(a.read_time) + '</p></div>' +
+        '<span class="art-arrow">→</span></a>';
+    }).join('');
+  }).catch(function(e){ console.error('Erreur de chargement de articles.json', e); });
+
+  fetch('content/apps.json').then(r => r.json()).then(data => {
+    var el = document.getElementById('js-apps');
+    var items = data.items || [];
+    el.innerHTML = items.map(function(app, i){
+      return '<div class="app-card' + (i % 2 === 1 ? ' alt' : '') + '">' +
+        '<div><p class="app-name">' + escapeHtml(app.name_tag) + '</p>' +
+        '<p class="app-title">' + escapeHtml(app.title) + '</p>' +
+        '<p class="app-desc">' + escapeHtml(app.card_desc) + '</p></div>' +
+        '<a class="app-link" href="applications.html#' + encodeURIComponent(app.slug) + '">Découvrir →</a></div>';
+    }).join('');
+  }).catch(function(e){ console.error('Erreur de chargement de apps.json', e); });
+})();
+</script>
+
+</body>
+</html>

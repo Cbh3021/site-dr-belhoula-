@@ -1,0 +1,18 @@
+{
+  "brand_name": "Dr Hédi Belhoula",
+  "brand_sub": "cabinet de médecine générale",
+  "hero_eyebrow": "médecin — développeur — prévention",
+  "hero_title_line1": "La médecine générale,",
+  "hero_title_line2": "vue par un clinicien",
+  "hero_title_em": "qui code.",
+  "hero_lede": "Prévention, conseils fondés sur la preuve, et un regard d'initié sur l'intelligence artificielle en santé — avec les outils que je construis pour mon propre cabinet.",
+  "piliers": [
+    { "icon": "Rx", "title": "Prévention", "text": "Dépistages, conseils de fond, revue des idées reçues." },
+    { "icon": "AI", "title": "IA en santé", "text": "Ce que l'intelligence artificielle change vraiment, avec un regard critique." },
+    { "icon": "{ }", "title": "Mes applications", "text": "Des outils conçus pour faciliter le travail au cabinet." },
+    { "icon": "</>", "title": "Coulisses dev", "text": "Apprendre à coder quand on est médecin, pas à pas." }
+  ],
+  "newsletter_title": "Un article par semaine, sans bruit",
+  "newsletter_text": "Prévention et santé numérique, directement dans votre boîte mail. Zéro spam, désabonnement en un clic.",
+  "footer_text": "© 2026 Dr Hédi Belhoula — médecin généraliste"
+}

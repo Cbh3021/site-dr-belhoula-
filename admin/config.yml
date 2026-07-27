@@ -1,0 +1,95 @@
+backend:
+  name: git-gateway
+  branch: main
+
+# Dossier où seront rangées les images ajoutées depuis l'admin
+media_folder: "uploads"
+public_folder: "/uploads"
+
+locale: "fr"
+
+collections:
+
+  # --- Réglages généraux du site (page d'accueil) ---
+  - name: "site"
+    label: "Réglages du site"
+    files:
+      - name: "settings"
+        label: "Page d'accueil"
+        file: "content/site.json"
+        fields:
+          - { label: "Nom affiché", name: "brand_name", widget: "string" }
+          - { label: "Sous-titre (à côté du nom)", name: "brand_sub", widget: "string" }
+          - { label: "Eyebrow (petite ligne au-dessus du titre)", name: "hero_eyebrow", widget: "string" }
+          - { label: "Titre — ligne 1", name: "hero_title_line1", widget: "string" }
+          - { label: "Titre — ligne 2", name: "hero_title_line2", widget: "string" }
+          - { label: "Titre — fin en italique", name: "hero_title_em", widget: "string" }
+          - { label: "Texte d'introduction (lede)", name: "hero_lede", widget: "text" }
+          - label: "Les 4 piliers"
+            name: "piliers"
+            widget: "list"
+            fields:
+              - { label: "Icône (texte court)", name: "icon", widget: "string" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+          - { label: "Titre newsletter", name: "newsletter_title", widget: "string" }
+          - { label: "Texte newsletter", name: "newsletter_text", widget: "text" }
+          - { label: "Texte du pied de page", name: "footer_text", widget: "string" }
+
+  # --- Articles du blog ---
+  - name: "articles"
+    label: "Articles"
+    files:
+      - name: "articles"
+        label: "Liste des articles"
+        file: "content/articles.json"
+        fields:
+          - label: "Articles"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Identifiant URL (slug, sans espace)", name: "slug", widget: "string", hint: "ex: mon-nouvel-article" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Catégorie", name: "tag", widget: "select", options: ["prévention", "ia en santé", "mes applications"] }
+              - { label: "Temps de lecture", name: "read_time", widget: "string", default: "5 min de lecture" }
+              - { label: "Date de mise à jour (texte libre)", name: "updated", widget: "string" }
+              - label: "Contenu de l'article"
+                name: "body"
+                widget: "markdown"
+                hint: "Pour un encadré 'point clé', tapez sur une ligne :::callout Titre, le texte, puis ::: sur la ligne suivante. Pour un encadré 'avertissement', même chose avec :::disclaimer"
+
+  # --- Applications présentées sur le site ---
+  - name: "apps"
+    label: "Applications"
+    files:
+      - name: "apps"
+        label: "Liste des applications"
+        file: "content/apps.json"
+        fields:
+          - label: "Applications"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            fields:
+              - { label: "Identifiant URL (slug, sans espace)", name: "slug", widget: "string" }
+              - { label: "Étiquette (ex: application gratuite)", name: "name_tag", widget: "string" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Description courte (page d'accueil)", name: "card_desc", widget: "text" }
+              - { label: "Description longue (page Applications)", name: "desc", widget: "text" }
+              - label: "Points forts (liste)"
+                name: "features"
+                widget: "list"
+                field: { label: "Point", name: "item", widget: "string" }
+              - { label: "Légende de l'aperçu", name: "screen_label", widget: "string" }
+              - label: "Lignes de l'aperçu (démo visuelle)"
+                name: "rows"
+                widget: "list"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "Valeur", name: "value", widget: "string" }
+              - { label: "Style visuel", name: "visual_style", widget: "select", options: ["dark", "coral"], default: "dark" }
+              - { label: "Bouton principal — texte", name: "action_primary_label", widget: "string" }
+              - { label: "Bouton principal — lien", name: "action_primary_url", widget: "string", default: "#" }
+              - { label: "Bouton secondaire — texte", name: "action_secondary_label", widget: "string" }
+              - { label: "Bouton secondaire — lien", name: "action_secondary_url", widget: "string", default: "#" }
