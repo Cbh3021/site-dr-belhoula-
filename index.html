@@ -226,10 +226,11 @@
         <h2 id="js-newsletter-title">Un article par semaine, sans bruit</h2>
         <p id="js-newsletter-text">Prévention et santé numérique, directement dans votre boîte mail. Zéro spam, désabonnement en un clic.</p>
       </div>
-      <form class="nl-form" onsubmit="return false;">
-        <input type="email" placeholder="votre@email.com" required>
-        <button class="btn primary" type="submit">S'abonner</button>
+      <form class="nl-form" id="js-newsletter-form">
+        <input type="email" id="js-newsletter-email" placeholder="votre@email.com" required>
+        <button class="btn primary" type="submit" id="js-newsletter-submit">S'abonner</button>
       </form>
+      <p id="js-newsletter-msg" style="margin:8px 0 0;font-size:13px;"></p>
     </div>
   </section>
 
@@ -288,20 +289,51 @@
         '<a class="app-link" href="applications.html#' + encodeURIComponent(app.slug) + '">Découvrir →</a></div>';
     }).join('');
   }).catch(function(e){ console.error('Erreur de chargement de apps.json', e); });
-})();
-</script>
 
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
+  var nlForm = document.getElementById('js-newsletter-form');
+  var nlMsg = document.getElementById('js-newsletter-msg');
+  var nlSubmit = document.getElementById('js-newsletter-submit');
+  if (nlForm) {
+    nlForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var emailInput = document.getElementById('js-newsletter-email');
+      var email = emailInput.value.trim();
+      if (!email) return;
+
+      nlSubmit.disabled = true;
+      nlSubmit.textContent = 'Inscription...';
+      nlMsg.style.color = 'rgba(255,255,255,0.65)';
+      nlMsg.textContent = '';
+
+      fetch('/.netlify/functions/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email })
+      })
+      .then(function(r){ return r.json().then(function(data){ return { ok: r.ok, data: data }; }); })
+      .then(function(result){
+        if (result.ok) {
+          nlMsg.style.color = '#8FD9C4';
+          nlMsg.textContent = 'Merci ! Votre inscription est confirmée.';
+          nlForm.reset();
+        } else {
+          nlMsg.style.color = '#F0A38A';
+          nlMsg.textContent = "Une erreur est survenue, réessayez dans un instant.";
+          console.error('Erreur newsletter:', result.data);
+        }
+      })
+      .catch(function(err){
+        nlMsg.style.color = '#F0A38A';
+        nlMsg.textContent = "Une erreur est survenue, réessayez dans un instant.";
+        console.error('Erreur newsletter:', err);
+      })
+      .finally(function(){
+        nlSubmit.disabled = false;
+        nlSubmit.textContent = "S'abonner";
+      });
     });
   }
+})();
 </script>
 
 </body>
