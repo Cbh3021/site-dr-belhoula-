@@ -1,4 +1,7 @@
 [build]
   publish = "."
+  functions = "netlify/functions"
 
 # Aucune étape de build n'est nécessaire : le site est en HTML/JS statique.
+# Le dossier netlify/functions contient une fonction serverless (subscribe.js)
+# qui gère l'inscription à la newsletter via Brevo, sans exposer la clé API.
