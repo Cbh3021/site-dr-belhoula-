@@ -92,6 +92,18 @@
   .chips{ display:flex; flex-wrap:wrap; gap:8px; }
   .chip{ font-size:12.5px; border:1px solid var(--border); border-radius:999px; color:var(--ink-soft); padding:5px 12px; }
 
+  .teleconsult{ border-top:1px solid var(--border); background:var(--surface); }
+  .tc-box{
+    background:linear-gradient(135deg, var(--coral-tint) 0%, var(--surface) 65%);
+    border:1px solid var(--coral); border-radius:var(--radius-lg);
+    padding:44px 40px; display:flex; justify-content:space-between; align-items:center; gap:32px; flex-wrap:wrap;
+  }
+  .tc-box .tc-copy{ max-width:56ch; }
+  .tc-box h2{ font-size:26px; margin:0 0 10px; }
+  .tc-box p.tc-text{ color:var(--ink-soft); font-size:15.5px; margin:0; }
+  .tc-disclaimer{ margin-top:16px; font-size:12.5px; color:var(--ink-faint); max-width:60ch; }
+  @media (max-width:720px){ .tc-box{ padding:32px 26px; } }
+
   .cta-footer{
     background:radial-gradient(900px 420px at 90% -20%, #163F3B 0%, var(--teal-deep) 55%, #081F1D 100%);
     color:#fff;
@@ -128,6 +140,7 @@
         <button data-lang="ar">ع</button>
         <button data-lang="en">EN</button>
       </div>
+      <a class="btn coral" href="https://rdv-paiement.onrender.com/reserver" target="_blank" rel="noopener" data-i18n="nav_teleconsult"></a>
     </div>
   </nav>
 </header>
@@ -177,6 +190,20 @@
       <h2 id="js-principles-title"></h2>
     </div>
     <div class="principle-grid" id="principle-grid"></div>
+  </div>
+</section>
+
+<section class="teleconsult">
+  <div class="wrap">
+    <div class="tc-box">
+      <div class="tc-copy">
+        <p class="eyebrow" id="js-tc-tag"></p>
+        <h2 id="js-tc-title"></h2>
+        <p class="tc-text" id="js-tc-text"></p>
+        <p class="tc-disclaimer" id="js-tc-disclaimer"></p>
+      </div>
+      <a class="btn coral" href="https://rdv-paiement.onrender.com/reserver" target="_blank" rel="noopener" id="js-tc-cta"></a>
+    </div>
   </div>
 </section>
 
@@ -233,6 +260,13 @@ const content = {
         {t:"Les données restent chez le patient", d:"Bases locales, sauvegardes automatiques, aucune dépendance à une connexion pour soigner."}
       ]
     },
+    teleconsult:{
+      tag:"consultation à distance",
+      title:"Une téléconsultation, sans passer par le cabinet",
+      text:"Renouvellement d'ordonnance, avis rapide, suivi entre deux visites : réservez un créneau et payez en ligne en toute sécurité, en quelques minutes.",
+      disclaimer:"La téléconsultation ne remplace pas une consultation physique en cas d'urgence ou de premier examen. En cas d'urgence, contactez directement les services d'urgence.",
+      cta:"Réserver une téléconsultation"
+    },
     projects:{
       title:"Douze outils, nés au cabinet",
       intro:"Chaque outil répond à un besoin rencontré en consultation : suivi de grossesse, croissance de l'enfant, tension, biologie, nutrition, sevrage tabagique, homéopathie, gestion administrative et rappels patients.",
@@ -280,6 +314,13 @@ const content = {
         {t:"Designed and tested in the clinic", d:"Every application first answers a need I met myself during a consultation."},
         {t:"Data stays with the patient", d:"Local databases, automatic backups, no dependency on a connection to provide care."}
       ]
+    },
+    teleconsult:{
+      tag:"remote consultation",
+      title:"An online consultation, without coming to the clinic",
+      text:"Prescription renewal, a quick opinion, follow-up between visits: book a slot and pay online securely, in just a few minutes.",
+      disclaimer:"Online consultation does not replace an in-person visit for emergencies or a first examination. In an emergency, contact emergency services directly.",
+      cta:"Book an online consultation"
     },
     projects:{
       title:"Twelve tools, born in the clinic",
@@ -329,6 +370,13 @@ const content = {
         {t:"البيانات تبقى عند المريض", d:"قواعد بيانات محلية، نسخ احتياطي تلقائي، ودون أي اعتماد على اتصال بالإنترنت لتقديم الرعاية."}
       ]
     },
+    teleconsult:{
+      tag:"استشارة عن بعد",
+      title:"استشارة عن بعد، دون التنقل إلى العيادة",
+      text:"تجديد وصفة طبية، رأي سريع، متابعة بين موعدين: احجز موعدك وادفع عبر الإنترنت بأمان، في دقائق معدودة.",
+      disclaimer:"الاستشارة عن بعد لا تُغني عن الاستشارة الحضورية في حالات الطوارئ أو الفحص الأول. في حالة الطوارئ، يرجى الاتصال مباشرة بمصالح الإسعاف.",
+      cta:"احجز استشارة عن بعد"
+    },
     projects:{
       title:"اثنا عشر أداة، ولدت داخل العيادة",
       intro:"كل أداة تجيب عن حاجة واجهتها في الاستشارة: متابعة الحمل، نمو الطفل، ضغط الدم، التحاليل البيولوجية، التغذية، الإقلاع عن التدخين، المعالجة المثلية، التسيير الإداري وتذكير المرضى.",
@@ -369,6 +417,12 @@ function renderLocal(lang){
   document.getElementById('js-about-tag').textContent = c.about.tag;
   document.getElementById('js-about-role').textContent = c.about.role;
   document.getElementById('js-about-bio').textContent = c.about.bio;
+
+  document.getElementById('js-tc-tag').textContent = c.teleconsult.tag;
+  document.getElementById('js-tc-title').textContent = c.teleconsult.title;
+  document.getElementById('js-tc-text').textContent = c.teleconsult.text;
+  document.getElementById('js-tc-disclaimer').textContent = c.teleconsult.disclaimer;
+  document.getElementById('js-tc-cta').textContent = c.teleconsult.cta;
 
   document.getElementById('js-principles-title').textContent = c.principles.title;
   const pg = document.getElementById('principle-grid');
