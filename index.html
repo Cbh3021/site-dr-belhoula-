@@ -149,7 +149,7 @@
 
     <div class="stats">
       <div class="stat"><div class="stat-value">25+</div><div class="stat-label" id="js-stat-0"></div></div>
-      <div class="stat"><div class="stat-value">11</div><div class="stat-label" id="js-stat-1"></div></div>
+      <div class="stat"><div class="stat-value">12</div><div class="stat-label" id="js-stat-1"></div></div>
       <div class="stat"><div class="stat-value">3</div><div class="stat-label" id="js-stat-2"></div></div>
       <div class="stat"><div class="stat-value">0</div><div class="stat-label" id="js-stat-3"></div></div>
     </div>
@@ -234,7 +234,7 @@ const content = {
       ]
     },
     projects:{
-      title:"Onze outils, nés au cabinet",
+      title:"Douze outils, nés au cabinet",
       intro:"Chaque outil répond à un besoin rencontré en consultation : suivi de grossesse, croissance de l'enfant, tension, biologie, nutrition, sevrage tabagique, homéopathie, gestion administrative et rappels patients.",
       items:[
         {m:"CG", t:"Calendrier Gestationnel", c:"Suivi de grossesse", d:"Datation automatique (DDR, échographie, terme corrigé), repères cliniques trimestre par trimestre, et une touche ludique clairement non médicale. Versions françaises et arabes, miroir l'une de l'autre.", f:["Datation automatique","Repères par trimestre","FR ⇄ AR"]},
@@ -246,7 +246,8 @@ const content = {
         {m:"MT", t:"Materia", c:"Homéopathie", d:"Aide-mémoire indexant 606 pathologies et 326 souches, recherche en nuage : les médicaments les plus cités pour un symptôme apparaissent en premier.", f:["606 pathologies","326 souches","Recherche en nuage"]},
         {m:"NC", t:"NEXTCARE Manager", c:"Gestion de cabinet", d:"Import CSV des actes, calcul automatique de la part patient, des remboursements et de la remise, export PDF feuille par feuille ou en bloc.", f:["Import CSV","Calcul auto. des remboursements","Export PDF"]},
         {m:"SR", t:"SORETRAS Manager", c:"Gestion de cabinet", d:"Base de patients, suivi des bordereaux mensuels, bilans annuels et statut d'envoi, pour ne plus perdre le fil des dossiers en attente.", f:["Base patients","Bilans annuels","Suivi des envois"]},
-        {m:"RV", t:"APP&RDV", c:"Application mobile", d:"Suivre ses rendez-vous chez le médecin traitant, avec rappels par notification et possibilité d'annuler ou de décaler en un geste, pour éviter les oublis et les rendez-vous ratés.", f:["Rappels push","Annuler / décaler","Suivi des RDV"]},
+        {m:"CB", t:"RDV CBH", c:"Gestion de cabinet", d:"Agenda des rendez-vous piloté par le secrétariat et le médecin ; le patient peut demander une annulation ou un report, effectif uniquement après validation du médecin.", f:["Agenda partagé secrétariat / médecin","Demande patient soumise à validation","Historique des modifications"]},
+        {m:"AP", t:"RDV APCI", c:"Application mobile", d:"Suivre tous ses rendez-vous médicaux ou autres, avec un rappel avant chaque échéance, pour ne plus rien manquer.", f:["Rappels automatiques","Tous les RDV au même endroit","Classement par date"]},
         {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"Un aide-mémoire d'acupuncture pensé pour la pratique : technique des points, cartographie des méridiens et correspondances par pathologie, pour retrouver rapidement le bon point en consultation.", f:["Technique des points","Cartographie des méridiens","Recherche par pathologie"]}
       ]
     },
@@ -281,7 +282,7 @@ const content = {
       ]
     },
     projects:{
-      title:"Eleven tools, born in the clinic",
+      title:"Twelve tools, born in the clinic",
       intro:"Each tool answers a need I met in consultation: pregnancy care, child growth, blood pressure, lab results, nutrition, smoking cessation, homeopathy, practice administration and patient reminders.",
       items:[
         {m:"GC", t:"Gestational Calendar", c:"Prenatal care", d:"Automatic dating from last period, ultrasound, or corrected term, trimester-by-trimester clinical milestones, and a light-hearted, clearly non-medical touch. Built as true mirror versions in French and Arabic.", f:["Automatic dating","Trimester milestones","FR ⇄ AR"]},
@@ -293,7 +294,8 @@ const content = {
         {m:"MT", t:"Materia", c:"Homeopathy", d:"A quick-reference indexing 606 conditions and 326 remedies, with cloud-style search: the most cited remedies for a symptom surface first.", f:["606 conditions","326 remedies","Cloud search"]},
         {m:"NC", t:"NEXTCARE Manager", c:"Practice management", d:"CSV import of procedures, automatic calculation of patient share, reimbursements and discount rate, PDF export sheet-by-sheet or in bulk.", f:["CSV import","Auto. reimbursement calc.","PDF export"]},
         {m:"SR", t:"SORETRAS Manager", c:"Practice management", d:"A patient database, monthly claim-sheet tracking, annual summaries and send status, so nothing pending gets lost.", f:["Patient database","Annual summaries","Send-status tracking"]},
-        {m:"MA", t:"APP&RDV", c:"Mobile app", d:"Keeps track of appointments with the treating physician, with push reminders and one-tap cancel or reschedule, to avoid forgotten or missed appointments.", f:["Push reminders","Cancel / reschedule","Appointment history"]},
+        {m:"CB", t:"RDV CBH", c:"Practice management", d:"Appointment schedule managed by the front desk and the physician; the patient can request a cancellation or reschedule, effective only after the doctor's validation.", f:["Shared front-desk / physician schedule","Patient request pending validation","Change history"]},
+        {m:"AP", t:"RDV APCI", c:"Mobile app", d:"Keeps track of every medical or personal appointment, with a reminder before each one, so nothing gets forgotten.", f:["Automatic reminders","All appointments in one place","Sorted by date"]},
         {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"An acupuncture quick-reference built for practice: point technique, a meridian map, and condition-based correspondences to find the right point during consultation.", f:["Point technique","Meridian map","Condition search"]}
       ]
     },
@@ -328,7 +330,7 @@ const content = {
       ]
     },
     projects:{
-      title:"أحد عشر أداة، ولدت داخل العيادة",
+      title:"اثنا عشر أداة، ولدت داخل العيادة",
       intro:"كل أداة تجيب عن حاجة واجهتها في الاستشارة: متابعة الحمل، نمو الطفل، ضغط الدم، التحاليل البيولوجية، التغذية، الإقلاع عن التدخين، المعالجة المثلية، التسيير الإداري وتذكير المرضى.",
       items:[
         {m:"حم", t:"التقويم الحملي", c:"متابعة الحمل", d:"تحديد آلي لعمر الحمل انطلاقا من تاريخ آخر دورة أو الصدى، معالم سريرية لكل ثلث من الحمل، ولمسة طريفة موضّحة بأنها معلومات ترفيهية لا طبية. طُوّرت بنسختين متطابقتين بالفرنسية والعربية.", f:["تحديد آلي للعمر","معالم كل ثلث","فر ⇄ عر"]},
@@ -340,7 +342,8 @@ const content = {
         {m:"مث", t:"Materia", c:"المعالجة المثلية", d:"أداة مرجعية تفهرس 606 حالات مرضية و326 دواء، مع بحث سحابي: تظهر الأدوية الأكثر ورودا في المقدمة.", f:["606 حالة مرضية","326 دواء","بحث سحابي"]},
         {m:"تأ", t:"NEXTCARE Manager", c:"تسيير العيادة", d:"استيراد بيانات CSV، احتساب آلي لحصة المريض والمبالغ المسترجعة ونسبة التخفيض، وتصدير PDF لكل كشف أو دفعة واحدة.", f:["استيراد CSV","احتساب آلي للاسترجاع","تصدير PDF"]},
         {m:"سو", t:"SORETRAS Manager", c:"تسيير العيادة", d:"قاعدة بيانات للمرضى، متابعة الكشوفات الشهرية والحصائل السنوية وحالة الإرسال.", f:["قاعدة بيانات المرضى","حصائل سنوية","متابعة الإرسال"]},
-        {m:"مو", t:"APP&RDV", c:"تطبيق للهاتف", d:"متابعة مواعيد الطبيب المعالج، مع تذكير عبر الإشعارات وإمكانية الإلغاء أو التأجيل بلمسة واحدة، لتجنب النسيان والمواعيد الفائتة.", f:["تذكير فوري","إلغاء / تأجيل","سجل المواعيد"]},
+        {m:"كب", t:"RDV CBH", c:"تسيير العيادة", d:"جدول مواعيد يديره السكرتارية والطبيب؛ يمكن للمريض طلب إلغاء أو تأجيل الموعد، ولا يصبح ذلك ساري المفعول إلا بعد موافقة الطبيب.", f:["جدول مشترك بين السكرتارية والطبيب","طلب المريض يخضع لموافقة الطبيب","سجل التعديلات"]},
+        {m:"مو", t:"RDV APCI", c:"تطبيق للهاتف", d:"متابعة كل المواعيد الطبية أو غيرها، مع تذكير قبل كل موعد، حتى لا يفوتك شيء.", f:["تذكير تلقائي","كل المواعيد في مكان واحد","ترتيب حسب التاريخ"]},
         {m:"وخ", t:"ACUPRO", c:"الوخز بالإبر", d:"دليل مرجعي للوخز بالإبر مصمم للممارسة: تقنية النقاط، خريطة المسارات (الميريديان)، ومطابقات حسب الحالة المرضية، لإيجاد النقطة المناسبة بسرعة أثناء الاستشارة.", f:["تقنية النقاط","خريطة المسارات","بحث حسب الحالة"]}
       ]
     },
