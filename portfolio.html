@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dr Hédi Belhoula — Médecin &amp; Développeur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EFF1EA;
+    --paper-raised:#F8F9F4;
+    --ink:#17262C;
+    --ink-soft:#51625F;
+    --teal:#2E6259;
+    --teal-dark:#1D453E;
+    --navy:#1B2E3C;
+    --navy-soft:#28405270;
+    --red:#A93226;
+    --line:#D6DACF;
+    --line-dark:#3B4E5C;
+    --radius:2px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body.lang-ar{
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+  }
+  body.lang-ar h1, body.lang-ar h2, body.lang-ar h3, body.lang-ar .stat-value{
+    font-family:'IBM Plex Sans Arabic', sans-serif;
+    font-weight:700;
+  }
+  body.lang-ar .tracking{ letter-spacing:0; }
+
+  h1,h2,h3{
+    font-family:'IBM Plex Serif', serif;
+    font-weight:600;
+    margin:0;
+    color:var(--ink);
+  }
+
+  p{margin:0;}
+
+  .wrap{
+    max-width:1080px;
+    margin-inline:auto;
+    padding-inline:28px;
+  }
+
+  a{color:inherit;}
+
+  /* ---------- NAV ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    background:var(--navy);
+    border-bottom:1px solid var(--line-dark);
+  }
+  .topbar .wrap{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-block:14px;
+  }
+  .mark{
+    color:var(--paper);
+    font-family:'IBM Plex Serif', serif;
+    font-weight:600;
+    font-size:19px;
+  }
+  body.lang-ar .mark{ font-family:'IBM Plex Sans Arabic', sans-serif; }
+  .mark span{ color:#8FAFA3; }
+
+  .langswitch{
+    display:flex; gap:4px;
+    border:1px solid var(--line-dark);
+    padding:3px;
+  }
+  .langswitch button{
+    appearance:none; border:none; background:transparent;
+    color:#B9C3C7;
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:13px;
+    padding:6px 12px;
+    cursor:pointer;
+    border-radius:1px;
+  }
+  .langswitch button.active{
+    background:var(--paper);
+    color:var(--navy);
+    font-weight:600;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background:var(--navy);
+    color:var(--paper);
+    overflow:hidden;
+    background-image:repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.035) 0px,
+      rgba(255,255,255,0.035) 1px,
+      transparent 1px,
+      transparent 30px
+    );
+  }
+  .hero .wrap{
+    padding-top:76px;
+    padding-bottom:56px;
+    position:relative;
+  }
+  .ecg-wrap{
+    width:100%;
+    max-width:640px;
+    margin-bottom:18px;
+    opacity:0.9;
+  }
+  .ecg-wrap svg{ width:100%; height:auto; display:block; }
+  .ecg-path{
+    fill:none;
+    stroke:var(--red);
+    stroke-width:2.5;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .ecg-path{
+      stroke-dasharray:900;
+      stroke-dashoffset:900;
+      animation:draw 2.1s cubic-bezier(.3,.7,.2,1) 0.15s forwards;
+    }
+  }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+
+  .hero h1{
+    color:var(--paper);
+    font-size:clamp(30px, 4.4vw, 48px);
+    line-height:1.18;
+    max-width:15ch;
+  }
+  .hero .subhead{
+    margin-top:18px;
+    max-width:52ch;
+    color:#C7D0CC;
+    font-size:18px;
+  }
+  .hero .signoff{
+    margin-top:10px;
+    color:#8FAFA3;
+    font-size:15px;
+  }
+
+  .stats{
+    margin-top:44px;
+    display:grid;
+    grid-template-columns:repeat(4, 1fr);
+    gap:1px;
+    background:var(--line-dark);
+    border:1px solid var(--line-dark);
+  }
+  .stat{
+    background:#20344450;
+    padding:18px 16px;
+  }
+  .stat-value{
+    font-family:'IBM Plex Serif', serif;
+    font-size:28px;
+    color:var(--paper);
+    font-weight:600;
+  }
+  .stat-label{
+    margin-top:6px;
+    font-size:12.5px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+    color:#9AACA6;
+  }
+  body.lang-ar .stat-label{ text-transform:none; letter-spacing:0; }
+
+  @media (max-width:720px){
+    .stats{ grid-template-columns:repeat(2, 1fr); }
+  }
+
+  /* ---------- SECTION GENERIC ---------- */
+  section{ padding-block:76px; }
+  .section-head{
+    max-width:60ch;
+    margin-bottom:40px;
+  }
+  .section-head h2{
+    font-size:clamp(24px, 3vw, 32px);
+  }
+  .section-head p{
+    margin-top:14px;
+    color:var(--ink-soft);
+    font-size:17px;
+  }
+
+  .about{ border-bottom:1px solid var(--line); }
+  .about .grid{
+    display:grid;
+    grid-template-columns:1fr 1.6fr;
+    gap:48px;
+    align-items:start;
+  }
+  .about .tag{
+    display:inline-block;
+    border:1px solid var(--teal);
+    color:var(--teal-dark);
+    font-size:13px;
+    padding:5px 11px;
+    margin-bottom:14px;
+  }
+  .about .name{
+    font-size:22px;
+    margin-bottom:2px;
+  }
+  .about .role{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin-bottom:20px;
+  }
+  .about-bio p{
+    font-size:18px;
+    color:var(--ink);
+    max-width:62ch;
+  }
+  @media (max-width:800px){
+    .about .grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- PRINCIPLES ---------- */
+  .principles{
+    background:var(--paper-raised);
+    border-bottom:1px solid var(--line);
+  }
+  .principle-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0;
+    border-top:1px solid var(--line);
+    border-inline-start:1px solid var(--line);
+  }
+  .principle{
+    padding:24px 22px;
+    border-inline-end:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+  }
+  .principle h3{
+    font-size:17px;
+    margin-bottom:8px;
+  }
+  .principle p{
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  @media (max-width:860px){
+    .principle-grid{ grid-template-columns:repeat(2,1fr); }
+  }
+  @media (max-width:520px){
+    .principle-grid{ grid-template-columns:1fr; }
+  }
+
+  /* ---------- PROJECTS ---------- */
+  .projects-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  @media (max-width:760px){
+    .projects-grid{ grid-template-columns:1fr; }
+  }
+  .card{
+    background:var(--paper);
+    padding:26px 26px 24px;
+    display:flex;
+    flex-direction:column;
+  }
+  .card-top{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:14px;
+  }
+  .badge{
+    width:38px; height:38px;
+    flex:0 0 auto;
+    display:flex; align-items:center; justify-content:center;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    border-radius:50%;
+  }
+  .card-titles{ min-width:0; }
+  .card h3{
+    font-size:18px;
+    line-height:1.3;
+  }
+  .card .cat{
+    margin-top:2px;
+    font-size:12.5px;
+    color:var(--ink-soft);
+  }
+  .card p.desc{
+    color:var(--ink-soft);
+    font-size:15px;
+    margin-bottom:16px;
+    flex-grow:1;
+  }
+  .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .chip{
+    font-size:12.5px;
+    border:1px solid var(--line);
+    color:var(--ink-soft);
+    padding:4px 10px;
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    background:var(--navy);
+    color:var(--paper);
+  }
+  footer .wrap{
+    padding-block:64px;
+  }
+  footer h2{
+    color:var(--paper);
+    font-size:clamp(22px,3vw,30px);
+    max-width:20ch;
+  }
+  footer .fp{
+    margin-top:14px;
+    color:#C7D0CC;
+    max-width:50ch;
+    font-size:16px;
+  }
+  .cta-btn{
+    display:inline-block;
+    margin-top:26px;
+    background:var(--red);
+    color:#fff;
+    text-decoration:none;
+    padding:12px 22px;
+    font-size:15px;
+    font-weight:600;
+    border-radius:1px;
+  }
+  .foot-bottom{
+    margin-top:48px;
+    padding-top:20px;
+    border-top:1px solid var(--line-dark);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+    font-size:13px;
+    color:#8393A0;
+  }
+
+  [dir="rtl"] .stat-label{ direction:rtl; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="mark">Dr Hédi Belhoula<span> · </span><span data-i18n="nav.role"></span></div>
+    <div class="langswitch">
+      <button data-lang="fr">FR</button>
+      <button data-lang="ar">AR</button>
+      <button data-lang="en">EN</button>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="ecg-wrap">
+      <svg viewBox="0 0 800 100" preserveAspectRatio="none">
+        <path class="ecg-path" d="M0,58 L110,58 L138,58 L152,20 L166,92 L180,58 L215,58 L242,40 L268,58 L800,58" />
+      </svg>
+    </div>
+    <h1 data-i18n="hero.title"></h1>
+    <p class="subhead" data-i18n="hero.subhead"></p>
+    <p class="signoff" data-i18n="hero.signoff"></p>
+
+    <div class="stats">
+      <div class="stat"><div class="stat-value">25+</div><div class="stat-label" data-i18n="stats.0"></div></div>
+      <div class="stat"><div class="stat-value">10</div><div class="stat-label" data-i18n="stats.1"></div></div>
+      <div class="stat"><div class="stat-value">2</div><div class="stat-label" data-i18n="stats.2"></div></div>
+      <div class="stat"><div class="stat-value">0</div><div class="stat-label" data-i18n="stats.3"></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <div class="tag" data-i18n="about.tag"></div>
+        <div class="name">Dr Hédi Belhoula</div>
+        <div class="role" data-i18n="about.role"></div>
+      </div>
+      <div class="about-bio">
+        <p data-i18n="about.bio"></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="principles">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="principles.title"></h2>
+    </div>
+    <div class="principle-grid" id="principle-grid"></div>
+  </div>
+</section>
+
+<section class="projects">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 data-i18n="projects.title"></h2>
+      <p data-i18n="projects.intro"></p>
+    </div>
+    <div class="projects-grid" id="projects-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2 data-i18n="footer.title"></h2>
+    <p class="fp" data-i18n="footer.text"></p>
+    <a class="cta-btn" href="mailto:lead-dev@hotmail.com" data-i18n="footer.cta"></a>
+    <div class="foot-bottom">
+      <span>Dr Hédi Belhoula — <span data-i18n="footer.cabinet"></span></span>
+      <span>lead-dev@hotmail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const colors = ['#2E6259','#1B2E3C','#A93226'];
+
+const content = {
+  fr:{
+    dir:'ltr',
+    nav:{ role:"Médecin &amp; Développeur" },
+    hero:{
+      title:"Le code, une autre façon de soigner.",
+      subhead:"Médecin généraliste depuis 25 ans, je conçois des outils numériques pour la consultation — pensés par un praticien, pour des praticiens.",
+      signoff:"Cabinet de Médecine Générale"
+    },
+    stats:[
+      "ans de pratique clinique",
+      "outils développés",
+      "langues natives (FR / AR)",
+      "ligne de code apprise à l'école"
+    ],
+    about:{
+      tag:"À propos",
+      role:"Médecin généraliste — développeur autodidacte",
+      bio:"Médecin depuis plus de vingt-cinq ans, j'ai retrouvé un amour que je croyais perdu : celui du développement. On est censé apprendre chaque jour sans jamais s'en lasser — jusqu'à devenir enfin libre. Rien ne nous arrête, sinon la limite de notre propre pensée. Le chemin n'a pas été simple, mais l'intelligence artificielle fait aujourd'hui partie intégrante de ma réflexion, de mon travail et de ma vie : elle m'accompagne autant au chevet du patient que devant l'éditeur de code. Les outils présentés ici sont nés de besoins réels, rencontrés en consultation, puis résolus une ligne à la fois."
+    },
+    principles:{
+      title:"Comment je travaille",
+      items:[
+        {t:"Autodidacte, par nécessité et par plaisir", d:"Aucune formation d'ingénieur — chaque outil a été appris projet après projet, consultation après consultation."},
+        {t:"L'IA comme partenaire de travail", d:"Elle m'aide à réfléchir, à coder et à corriger, sans jamais remplacer le jugement clinique."},
+        {t:"Conçu et testé au cabinet", d:"Chaque application répond d'abord à un besoin que j'ai moi-même rencontré en consultation."},
+        {t:"Les données restent chez le patient", d:"Bases locales, sauvegardes automatiques, aucune dépendance à une connexion pour soigner."}
+      ]
+    },
+    projects:{
+      title:"Dix outils, nés au cabinet",
+      intro:"Chaque outil répond à un besoin rencontré en consultation : suivi de grossesse, croissance de l'enfant, tension, biologie, nutrition, sevrage tabagique, homéopathie, gestion administrative et rappels patients.",
+      items:[
+        {m:"CG", t:"Calendrier Gestationnel", c:"Suivi de grossesse", d:"Un dossier de suivi de grossesse pensé pour la consultation : datation automatique (DDR, échographie, terme corrigé), repères cliniques trimestre par trimestre, et une touche ludique — sexe chinois et signe astrologique du bébé — clairement présentée comme non médicale. Développé en versions françaises et arabes, miroir l'une de l'autre.", f:["Datation automatique","Repères par trimestre","FR ⇄ AR"]},
+        {m:"CP", t:"Suivi de croissance pédiatrique", c:"Pédiatrie", d:"Un dossier patient dédié à la croissance de l'enfant : poids, taille, IMC et périmètre crânien comparés aux courbes de l'OMS adaptées à la population tunisienne, avec recommandations cliniques générées automatiquement et export PDF pour le carnet de santé.", f:["Courbes OMS","Recommandations auto.","Export PDF"]},
+        {m:"PT", t:"Profil Tensionnel Patient", c:"Cardiologie", d:"Suivi longitudinal de la tension artérielle par patient, avec classification automatique selon les grades ESC/ESH 2023, calcul de la pression artérielle moyenne et du pouls, et une courbe d'évolution pour visualiser la tendance d'un coup d'œil.", f:["Classification ESC/ESH 2023","PAM &amp; pouls auto.","Courbe de tendance"]},
+        {m:"SB", t:"Suivi Biologique Patients", c:"Biologie médicale", d:"Un tableau de bord biologique qui va au-delà de la simple saisie : calcul automatique du DFG (CKD-EPI 2021), du LDL (Friedewald) et de l'orientation glycémique, détection des anomalies par rapport aux normes, et suivi des tendances bilan après bilan.", f:["DFG · LDL auto.","Détection d'anomalies","Historique des bilans"]},
+        {m:"MZ", t:"Mizen — ميزان", c:"Nutrition", d:"Un accompagnement nutritionnel pensé pour le régime tunisien : jeûne intermittent adapté au grade d'obésité, pyramide alimentaire, plans de repas personnalisés et lecture des données de bio-impédance traduite en conseils concrets.", f:["Jeûne intermittent","Plan alimentaire","Bio-impédance"]},
+        {m:"DC", t:"Dernière Clope", c:"Addictologie", d:"Un parcours de sevrage tabagique en trois temps : anamnèse et calcul des paquets-années, test de Fagerström pour mesurer la dépendance, puis recommandations d'aide au sevrage générées automatiquement selon le score et les comorbidités.", f:["Test de Fagerström","Paquets-années","Recommandations auto."]},
+        {m:"MT", t:"Materia", c:"Homéopathie", d:"Un aide-mémoire de pharmacologie homéopathique indexant 606 pathologies et 326 souches, avec une recherche en nuage : les médicaments les plus cités pour un symptôme donné apparaissent en premier, à partir de l'ouvrage de référence Pharmacologie &amp; matière médicale homéopathique.", f:["606 pathologies","326 souches","Recherche en nuage"]},
+        {m:"NC", t:"NEXTCARE Manager", c:"Gestion de cabinet", d:"Gestion des bordereaux de l'assureur NEXTCARE : import CSV des actes, calcul automatique de la part patient, des remboursements et de la remise, export PDF feuille par feuille ou en bloc.", f:["Import CSV","Calcul auto. des remboursements","Export PDF"]},
+        {m:"SR", t:"SORETRAS Manager", c:"Gestion de cabinet", d:"Un gestionnaire dédié aux bordereaux SORETRAS : base de patients, suivi des bordereaux mensuels, bilans annuels et statut d'envoi, pour ne plus perdre le fil des dossiers en attente.", f:["Base patients","Bilans annuels","Suivi des envois"]},
+        {m:"RV", t:"Mes Rendez-vous", c:"Application mobile", d:"Une application mobile pour le patient : rappels de rendez-vous par notification, possibilité d'annuler ou de décaler en un geste, pour réduire les rendez-vous manqués.", f:["Rappels push","Annuler / décaler","Suivi des RDV"]}
+      ]
+    },
+    footer:{
+      title:"Une idée, un besoin au cabinet ?",
+      text:"Je continue à construire un outil à la fois. Si vous êtes praticien et qu'un besoin similaire vous parle, écrivez-moi.",
+      cta:"Envoyer un email",
+      cabinet:"Cabinet de Médecine Générale"
+    }
+  },
+
+  en:{
+    dir:'ltr',
+    nav:{ role:"Physician &amp; Developer" },
+    hero:{
+      title:"Code, another way to care for people.",
+      subhead:"A general practitioner for 25 years, now building digital tools for the consultation room — designed by a clinician, for clinicians.",
+      signoff:"General Practice"
+    },
+    stats:[
+      "years of clinical practice",
+      "tools built",
+      "native languages (FR / AR)",
+      "lines of code learned in school"
+    ],
+    about:{
+      tag:"About",
+      role:"General practitioner — self-taught developer",
+      bio:"A physician for more than twenty-five years, I recently rediscovered a love I thought I'd lost: building software. We're meant to learn something new every day without ever growing tired of it — until, at last, we become free. Nothing holds us back except the limits of our own thinking. The path hasn't been easy, but artificial intelligence is now woven into how I think, work and live — as present at the patient's bedside as it is in front of a code editor. Every tool on this page was born from a real need I met in consultation, then solved one line at a time."
+    },
+    principles:{
+      title:"How I work",
+      items:[
+        {t:"Self-taught, out of necessity and love of the craft", d:"No engineering degree — every tool was learned project after project, consultation after consultation."},
+        {t:"AI as a working partner", d:"It helps me think, code and correct — it never replaces clinical judgment."},
+        {t:"Designed and tested in the clinic", d:"Every application first answers a need I met myself during a consultation."},
+        {t:"Data stays with the patient", d:"Local databases, automatic backups, no dependency on a connection to provide care."}
+      ]
+    },
+    projects:{
+      title:"Ten tools, born in the clinic",
+      intro:"Each tool answers a need I met in consultation: pregnancy care, child growth, blood pressure, lab results, nutrition, smoking cessation, homeopathy, practice administration and patient reminders.",
+      items:[
+        {m:"GC", t:"Gestational Calendar", c:"Prenatal care", d:"A pregnancy-tracking chart built for consultation: automatic dating from last period, ultrasound, or corrected term, trimester-by-trimester clinical milestones, and a light-hearted touch — a Chinese gender guess and the baby's zodiac sign — clearly labelled as non-medical. Built as true mirror versions in French and Arabic.", f:["Automatic dating","Trimester milestones","FR ⇄ AR"]},
+        {m:"PG", t:"Pediatric Growth Tracker", c:"Pediatrics", d:"A dedicated growth-tracking chart: weight, height, BMI and head circumference plotted against WHO reference curves adapted to the Tunisian population, with automatically generated clinical flags and PDF export for the child's health record.", f:["WHO curves","Automatic flags","PDF export"]},
+        {m:"BP", t:"Blood Pressure Profile", c:"Cardiology", d:"Longitudinal blood-pressure tracking per patient, with automatic grading against the ESC/ESH 2023 classification, mean arterial pressure and pulse calculation, and a trend chart to read the trajectory at a glance.", f:["ESC/ESH 2023 grading","Auto MAP &amp; pulse","Trend chart"]},
+        {m:"LT", t:"Lab Results Tracker", c:"Clinical biology", d:"A biology dashboard that goes beyond simple data entry: automatic calculation of eGFR (CKD-EPI 2021), LDL (Friedewald) and glycaemic orientation, anomaly detection against reference ranges, and trend tracking across successive panels.", f:["eGFR · LDL auto.","Anomaly detection","Panel history"]},
+        {m:"MZ", t:"Mizen — ميزان", c:"Nutrition", d:"A nutrition companion built around the Tunisian diet: intermittent fasting adapted to the patient's obesity grade, a food pyramid, personalised meal plans, and bio-impedance readings translated into concrete advice.", f:["Intermittent fasting","Meal plans","Bio-impedance"]},
+        {m:"LC", t:"Last Cigarette", c:"Smoking cessation", d:"A three-step smoking-cessation pathway: history-taking with automatic pack-year calculation, the Fagerström test to measure dependence, then withdrawal-support recommendations generated automatically from the score and comorbidities.", f:["Fagerström test","Pack-years","Auto. recommendations"]},
+        {m:"MT", t:"Materia", c:"Homeopathy", d:"A homeopathic pharmacology quick-reference indexing 606 conditions and 326 remedies, with a cloud-style search: the remedies most cited for a given symptom surface first, drawn from the reference textbook Pharmacologie &amp; matière médicale homéopathique.", f:["606 conditions","326 remedies","Cloud search"]},
+        {m:"NC", t:"NEXTCARE Manager", c:"Practice management", d:"Claims management for the NEXTCARE insurer: CSV import of procedures, automatic calculation of the patient's share, reimbursements and the discount rate, PDF export sheet-by-sheet or in bulk.", f:["CSV import","Auto. reimbursement calc.","PDF export"]},
+        {m:"SR", t:"SORETRAS Manager", c:"Practice management", d:"A dedicated manager for SORETRAS claim sheets: a patient database, monthly claim-sheet tracking, annual summaries and send status, so nothing pending gets lost.", f:["Patient database","Annual summaries","Send-status tracking"]},
+        {m:"MA", t:"My Appointments", c:"Mobile app", d:"A patient-facing mobile app: appointment reminders by notification, with one-tap cancel or reschedule, to cut down on missed visits.", f:["Push reminders","Cancel / reschedule","Appointment history"]}
+      ]
+    },
+    footer:{
+      title:"An idea, or a need in your own practice?",
+      text:"I keep building one tool at a time. If you're a clinician and a similar need speaks to you, get in touch.",
+      cta:"Send an email",
+      cabinet:"General Practice"
+    }
+  },
+
+  ar:{
+    dir:'rtl',
+    nav:{ role:"طبيب ومطوّر" },
+    hero:{
+      title:"الشيفرة البرمجية... طريقة أخرى للعناية بالمرضى.",
+      subhead:"طبيب عام منذ 25 عاما، أصمم اليوم أدوات رقمية لغرفة الاستشارة — بعين طبيب ولاحتياجات الأطباء.",
+      signoff:"طب عام"
+    },
+    stats:[
+      "سنة من الممارسة السريرية",
+      "أدوات تم تطويرها",
+      "لغتان أصليتان (فرنسية/عربية)",
+      "سطر برمجي تعلمته في المدرسة"
+    ],
+    about:{
+      tag:"نبذة",
+      role:"طبيب عام — مطوّر معتمد على التعلّم الذاتي",
+      bio:"طبيب منذ أكثر من خمسة وعشرين عاما، وجدت من جديد حبا كنت أظنه ضائعا: حب البرمجة. من المفترض أن نتعلم كل يوم دون أن يصيبنا الملل، إلى أن نصبح أخيرا أحرارا. لا شيء يوقفنا سوى حدود تفكيرنا. لم يكن الطريق سهلا، لكن الذكاء الاصطناعي أصبح اليوم جزءا لا يتجزأ من تفكيري وعملي وحياتي، يرافقني عند سرير المريض كما يرافقني أمام محرر الشيفرة البرمجية. كل أداة معروضة هنا وُلدت من حاجة حقيقية واجهتها في الاستشارة، ثم عالجتها سطرا سطرا."
+    },
+    principles:{
+      title:"كيف أعمل",
+      items:[
+        {t:"معتمد على التعلّم الذاتي، عن قناعة وشغف", d:"لا شهادة هندسية — كل أداة تعلّمتها مشروعا بعد مشروع، واستشارة بعد استشارة."},
+        {t:"الذكاء الاصطناعي كشريك عمل", d:"يساعدني على التفكير والبرمجة والتصحيح، دون أن يحل يوما محل الحكم السريري."},
+        {t:"مصمَّم ومختبَر داخل العيادة", d:"كل تطبيق يجيب أولا عن حاجة واجهتها بنفسي أثناء الاستشارة."},
+        {t:"البيانات تبقى عند المريض", d:"قواعد بيانات محلية، نسخ احتياطي تلقائي، ودون أي اعتماد على اتصال بالإنترنت لتقديم الرعاية."}
+      ]
+    },
+    projects:{
+      title:"عشرة أدوات، ولدت داخل العيادة",
+      intro:"كل أداة تجيب عن حاجة واجهتها في الاستشارة: متابعة الحمل، نمو الطفل، ضغط الدم، التحاليل البيولوجية، التغذية، الإقلاع عن التدخين، المعالجة المثلية، التسيير الإداري وتذكير المرضى.",
+      items:[
+        {m:"حم", t:"التقويم الحملي", c:"متابعة الحمل", d:"بطاقة متابعة حمل مصممة لأجواء الاستشارة: تحديد آلي لعمر الحمل انطلاقا من تاريخ آخر دورة أو الصدى، معالم سريرية لكل ثلث من الحمل، ولمسة طريفة — تخمين جنس الجنين والبرج الفلكي — موضّحة بأنها معلومات ترفيهية لا طبية. طُوّرت بنسختين متطابقتين بالفرنسية والعربية.", f:["تحديد آلي للعمر","معالم كل ثلث","فر ⇄ عر"]},
+        {m:"نط", t:"متابعة نمو الأطفال", c:"طب الأطفال", d:"بطاقة مريض مخصّصة لمتابعة نمو الطفل: الوزن والطول ومؤشر كتلة الجسم ومحيط الرأس مقارنة بمنحنيات منظمة الصحة العالمية المكيّفة مع الساكنة التونسية، مع توصيات سريرية تلقائية وتصدير بصيغة PDF لدفتر صحة الطفل.", f:["منحنيات OMS","توصيات آلية","تصدير PDF"]},
+        {m:"ضغ", t:"بطاقة متابعة ضغط الدم", c:"أمراض القلب", d:"متابعة زمنية لضغط الدم لكل مريض، مع تصنيف تلقائي حسب توصيات ESC/ESH لسنة 2023، واحتساب معدل الضغط الشرياني والنبض، ومنحنى تطور يتيح قراءة الاتجاه بنظرة واحدة.", f:["تصنيف ESC/ESH 2023","احتساب آلي للمعدل والنبض","منحنى الاتجاه"]},
+        {m:"تح", t:"متابعة التحاليل البيولوجية", c:"البيولوجيا الطبية", d:"لوحة متابعة بيولوجية تتجاوز مجرد إدخال النتائج: احتساب آلي لمعدل الترشيح الكبيبي (CKD-EPI 2021) والكوليسترول الضار (معادلة فريدوالد) والتوجه السكري، مع كشف الانحرافات عن المعدلات المرجعية ومتابعة تطورها من فحص لآخر.", f:["احتساب آلي للمؤشرات","كشف الانحرافات","سجل الفحوصات"]},
+        {m:"مز", t:"ميزان — Mizen", c:"التغذية", d:"مرافق غذائي مصمم على أساس النظام الغذائي التونسي: صيام متقطع مكيّف حسب درجة السمنة، هرم غذائي، خطط وجبات شخصية، وقراءة معطيات مقاومة المعاوقة الحيوية مترجمة إلى نصائح عملية.", f:["صيام متقطع","خطة غذائية","تحليل المعاوقة الحيوية"]},
+        {m:"سج", t:"آخر سيجارة", c:"الإقلاع عن التدخين", d:"مسار للإقلاع عن التدخين على ثلاث مراحل: استجواب واحتساب آلي لعدد سنوات العلب، اختبار فاجرستروم لقياس درجة الإدمان، ثم توصيات للمساعدة على الإقلاع تُولَّد تلقائيا حسب النتيجة والأمراض المصاحبة.", f:["اختبار فاجرستروم","سنوات العلب","توصيات آلية"]},
+        {m:"مث", t:"Materia", c:"المعالجة المثلية", d:"أداة مرجعية سريعة في الصيدلة المثلية تفهرس 606 حالات مرضية و326 دواء، مع بحث على شكل سحابة كلمات: تظهر الأدوية الأكثر ورودا لعرض معين في المقدمة، اعتمادا على المرجع Pharmacologie &amp; matière médicale homéopathique.", f:["606 حالة مرضية","326 دواء","بحث سحابي"]},
+        {m:"تأ", t:"NEXTCARE Manager", c:"تسيير العيادة", d:"تسيير كشوفات شركة التأمين NEXTCARE: استيراد بيانات CSV للأعمال الطبية، احتساب آلي لحصة المريض والمبالغ المسترجعة ونسبة التخفيض، وتصدير PDF لكل كشف أو دفعة واحدة.", f:["استيراد CSV","احتساب آلي للاسترجاع","تصدير PDF"]},
+        {m:"سو", t:"SORETRAS Manager", c:"تسيير العيادة", d:"أداة مخصصة لتسيير كشوفات SORETRAS: قاعدة بيانات للمرضى، متابعة الكشوفات الشهرية والحصائل السنوية وحالة الإرسال، حتى لا يضيع أي ملف معلق.", f:["قاعدة بيانات المرضى","حصائل سنوية","متابعة الإرسال"]},
+        {m:"مو", t:"مواعيدي", c:"تطبيق للهاتف", d:"تطبيق للهاتف موجّه للمريض: تذكير بالمواعيد عبر الإشعارات، وإمكانية الإلغاء أو التأجيل بلمسة واحدة، للحد من المواعيد الفائتة.", f:["تذكير فوري","إلغاء / تأجيل","سجل المواعيد"]}
+      ]
+    },
+    footer:{
+      title:"فكرة أو حاجة داخل عيادتك؟",
+      text:"أواصل بناء أداة تلو الأخرى. إن كنت طبيبا وراودتك حاجة مشابهة، راسلني.",
+      cta:"إرسال بريد إلكتروني",
+      cabinet:"طب عام"
+    }
+  }
+};
+
+function setText(el, val){ el.innerHTML = val; }
+
+function render(lang){
+  const c = content[lang];
+  document.documentElement.setAttribute('lang', lang);
+  document.documentElement.setAttribute('dir', c.dir);
+  document.body.classList.toggle('lang-ar', lang === 'ar');
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const path = el.getAttribute('data-i18n').split('.');
+    let val = c;
+    for(const p of path){
+      if(val == null) break;
+      val = val[p];
+    }
+    if(val !== undefined) setText(el, val);
+  });
+
+  document.querySelectorAll('.langswitch button').forEach(b=>{
+    b.classList.toggle('active', b.getAttribute('data-lang') === lang);
+  });
+
+  // principles
+  const pg = document.getElementById('principle-grid');
+  pg.innerHTML = '';
+  c.principles.items.forEach(p=>{
+    const div = document.createElement('div');
+    div.className = 'principle';
+    div.innerHTML = `<h3>${p.t}</h3><p>${p.d}</p>`;
+    pg.appendChild(div);
+  });
+
+  // projects
+  const grid = document.getElementById('projects-grid');
+  grid.innerHTML = '';
+  c.projects.items.forEach((p, i)=>{
+    const card = document.createElement('div');
+    card.className = 'card';
+    const chips = p.f.map(x=>`<span class="chip">${x}</span>`).join('');
+    card.innerHTML = `
+      <div class="card-top">
+        <div class="badge" style="background:${colors[i % colors.length]}">${p.m}</div>
+        <div class="card-titles">
+          <h3>${p.t}</h3>
+          <div class="cat">${p.c}</div>
+        </div>
+      </div>
+      <p class="desc">${p.d}</p>
+      <div class="chips">${chips}</div>
+    `;
+    grid.appendChild(card);
+  });
+}
+
+document.querySelectorAll('.langswitch button').forEach(btn=>{
+  btn.addEventListener('click', ()=> render(btn.getAttribute('data-lang')));
+});
+
+render('fr');
+</script>
+
+</body>
+</html>
