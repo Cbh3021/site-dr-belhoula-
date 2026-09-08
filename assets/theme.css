@@ -163,8 +163,12 @@ footer.site-footer a:hover{ color:var(--ink); }
 
 @media (max-width:760px){
   .nav-links{ display:none; }
-  .nav-right{ flex-wrap:wrap; justify-content:flex-end; gap:8px; }
+  nav.site-nav{ height:auto; flex-wrap:wrap; row-gap:12px; padding-block:14px; }
+  .nav-right{ flex-wrap:wrap; justify-content:flex-start; gap:8px; width:100%; }
   .nav-right .btn{ padding:9px 14px; font-size:13px; }
+}
+@media (max-width:420px){
+  .nav-right .btn{ flex:1 1 100%; justify-content:center; }
 }
 @media (prefers-reduced-motion:reduce){
   html{ scroll-behavior:auto; }
