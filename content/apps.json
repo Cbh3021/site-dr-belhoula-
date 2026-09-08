@@ -1,49 +1,73 @@
 {
   "items": [
     {
-      "slug": "rappel-depistage",
-      "name_tag": "application gratuite",
-      "title": "Rappel Dépistage",
-      "card_desc": "Un calendrier personnel de prévention selon l'âge et les antécédents, avec rappels automatiques.",
-      "desc": "Un calendrier personnel de prévention généré à partir de l'âge, du sexe et des antécédents renseignés, avec des rappels avant chaque échéance. Pensé pour remplacer le carnet de notes mental que beaucoup de patients tiennent (mal) eux-mêmes.",
+      "slug": "rdv-cbh",
+      "name_tag": "outil cabinet",
+      "title": "RDV CBH",
+      "card_desc": "L'application de gestion des rendez-vous du cabinet, utilisée par le secrétariat et le médecin, avec demande d'annulation ou de report côté patient soumise à validation.",
+      "desc": "RDV CBH est l'application interne de gestion des rendez-vous du cabinet : le secrétariat et le médecin y créent, modifient et suivent l'agenda des consultations. Le patient peut, de son côté, demander une annulation ou un report ; la modification ne devient effective qu'après validation du médecin, pour garder un agenda toujours fiable.",
       "features": [
-        "Calendrier ajusté automatiquement aux recommandations en vigueur",
-        "Rappels par notification, sans compte ni collecte de données sensibles",
-        "Export PDF à apporter en consultation"
+        "Agenda partagé entre le secrétariat et le médecin, avec vue d'ensemble des rendez-vous",
+        "Demande d'annulation ou de report côté patient, soumise à validation du médecin avant tout changement",
+        "Historique des rendez-vous et des modifications, consultable à tout moment"
       ],
-      "screen_label": "rappel dépistage — aperçu",
+      "screen_label": "rdv cbh — aperçu",
       "rows": [
-        { "label": "Bilan lipidique", "value": "dans 4 mois" },
-        { "label": "Frottis cervical", "value": "à jour" },
-        { "label": "Tension artérielle", "value": "aujourd'hui" },
-        { "label": "Rappel vaccinal", "value": "dans 2 mois" }
+        {
+          "label": "Patient",
+          "value": "consultation de suivi"
+        },
+        {
+          "label": "Demande",
+          "value": "report au 14 sept."
+        },
+        {
+          "label": "Statut",
+          "value": "en attente de validation"
+        },
+        {
+          "label": "Validé par",
+          "value": "Dr Belhoula"
+        }
       ],
       "visual_style": "dark",
-      "action_primary_label": "Télécharger l'application",
+      "action_primary_label": "Demander un accès",
       "action_primary_url": "#",
       "action_secondary_label": "Voir la documentation",
       "action_secondary_url": "#"
     },
     {
-      "slug": "fiche-patient-express",
-      "name_tag": "outil cabinet",
-      "title": "Fiche Patient Express",
-      "card_desc": "Un outil de synthèse clinique pensé pour les consultations courtes, développé avec des confrères.",
-      "desc": "Développé avec plusieurs confrères généralistes, cet outil structure la synthèse clinique en consultation courte : motif, antécédents pertinents, conduite à tenir. Il ne remplace aucun logiciel métier, il vient en complément pour gagner du temps sur la rédaction.",
+      "slug": "rdv-apci",
+      "name_tag": "application patient",
+      "title": "RDV APCI",
+      "card_desc": "L'application patient pour suivre tous ses rendez-vous médicaux ou autres, avec un rappel avant chaque échéance.",
+      "desc": "RDV APCI est pensée pour le patient : elle centralise tous les rendez-vous, médicaux ou non, et envoie un rappel avant chaque échéance. Fini les rendez-vous notés sur un bout de papier ou oubliés — tout est regroupé au même endroit.",
       "features": [
-        "Modèles de synthèse adaptés aux motifs les plus fréquents en médecine générale",
-        "Fonctionne hors ligne, aucune donnée hébergée à l'extérieur du cabinet",
-        "Export compatible avec les principaux logiciels métier"
+        "Ajout de rendez-vous médicaux ou personnels en quelques secondes",
+        "Rappel automatique par notification avant chaque rendez-vous",
+        "Vue d'ensemble de tous les rendez-vous à venir, classés par date"
       ],
-      "screen_label": "fiche patient express — aperçu",
+      "screen_label": "rdv apci — aperçu",
       "rows": [
-        { "label": "Motif", "value": "douleur lombaire" },
-        { "label": "Antécédents", "value": "3 pertinents" },
-        { "label": "Examen", "value": "en cours" },
-        { "label": "Conduite à tenir", "value": "3 items" }
+        {
+          "label": "Prochain rdv",
+          "value": "cardiologue, jeudi"
+        },
+        {
+          "label": "Rappel",
+          "value": "dans 2 jours"
+        },
+        {
+          "label": "À venir",
+          "value": "3 rendez-vous"
+        },
+        {
+          "label": "Dernier ajouté",
+          "value": "analyse sanguine"
+        }
       ],
       "visual_style": "coral",
-      "action_primary_label": "Demander un accès",
+      "action_primary_label": "Télécharger l'application",
       "action_primary_url": "#",
       "action_secondary_label": "Voir la documentation",
       "action_secondary_url": "#"
