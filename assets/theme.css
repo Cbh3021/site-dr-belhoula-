@@ -164,6 +164,7 @@ footer.site-footer a:hover{ color:var(--ink); }
 @media (max-width:760px){
   .nav-links{ display:none; }
   nav.site-nav{ height:auto; flex-wrap:wrap; row-gap:12px; padding-block:14px; }
+  .brand-sub{ display:none; }
   .nav-right{ display:contents; }
   .nav-right .langswitch{ flex:0 0 auto; }
   .nav-right .btn{ flex:1 1 100%; justify-content:center; padding:9px 14px; font-size:13px; }
