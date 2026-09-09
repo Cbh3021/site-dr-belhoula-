@@ -2,7 +2,7 @@
   "items": [
     {
       "slug": "calendrier-gestationnel",
-      "name_tag": "application gratuite",
+      "name_tag": "Gynécologie",
       "title": "Calendrier Gestationnel",
       "card_desc": "Un calendrier de grossesse qui date automatiquement le terme et donne les repères cliniques de chaque trimestre.",
       "desc": "Datation automatique de la grossesse à partir de la date des dernières règles, de l'échographie ou du terme corrigé, avec les repères cliniques propres à chaque trimestre. Une touche ludique y est ajoutée, clairement présentée comme non médicale. L'application existe en versions française et arabe, miroir l'une de l'autre.",
@@ -38,7 +38,7 @@
     },
     {
       "slug": "suivi-croissance-pediatrique",
-      "name_tag": "outil cabinet",
+      "name_tag": "Pédiatrie",
       "title": "Suivi de croissance pédiatrique",
       "card_desc": "Poids, taille, IMC et périmètre crânien comparés aux courbes OMS adaptées à la population tunisienne, avec export PDF.",
       "desc": "Le poids, la taille, l'IMC et le périmètre crânien de l'enfant sont comparés aux courbes de croissance de l'OMS, adaptées à la population tunisienne. Des recommandations cliniques sont générées automatiquement en cas d'écart, et un export PDF permet d'alimenter le carnet de santé.",
@@ -74,7 +74,7 @@
     },
     {
       "slug": "profil-tensionnel-patient",
-      "name_tag": "application gratuite",
+      "name_tag": "Cardiologie",
       "title": "Profil Tensionnel Patient",
       "card_desc": "Un suivi de la tension artérielle dans le temps, avec classification automatique selon les recommandations ESC/ESH 2023.",
       "desc": "Suivi longitudinal de la tension artérielle avec classification automatique selon les recommandations ESC/ESH 2023, calcul de la pression artérielle moyenne et du pouls, et une courbe d'évolution pour visualiser la tendance dans le temps.",
@@ -110,7 +110,7 @@
     },
     {
       "slug": "suivi-biologique-patients",
-      "name_tag": "outil cabinet",
+      "name_tag": "Biologie",
       "title": "Suivi Biologique Patients",
       "card_desc": "Calcul automatique du DFG, du LDL et de l'orientation glycémique, avec détection des anomalies bilan après bilan.",
       "desc": "Calcul automatique du débit de filtration glomérulaire (CKD-EPI 2021), du cholestérol LDL (formule de Friedewald) et de l'orientation glycémique, avec détection des anomalies et suivi de leur évolution d'un bilan à l'autre.",
@@ -146,7 +146,7 @@
     },
     {
       "slug": "mizen",
-      "name_tag": "application gratuite",
+      "name_tag": "Nutrition",
       "title": "Mizen — ميزان",
       "card_desc": "Un accompagnement nutritionnel pensé pour le régime tunisien : jeûne intermittent, pyramide alimentaire et plans de repas.",
       "desc": "Un accompagnement nutritionnel construit autour du régime tunisien : jeûne intermittent adapté au grade d'obésité, pyramide alimentaire, plans de repas personnalisés, et lecture des données de bio-impédance traduite en conseils concrets.",
@@ -182,7 +182,7 @@
     },
     {
       "slug": "derniere-clope",
-      "name_tag": "application gratuite",
+      "name_tag": "Addiction Tabac",
       "title": "Dernière Clope",
       "card_desc": "Calcul des paquets-années et test de Fagerström, avec des recommandations de sevrage générées automatiquement.",
       "desc": "Une anamnèse tabagique avec calcul automatique des paquets-années et test de Fagerström, suivie de recommandations d'aide au sevrage générées automatiquement selon le score obtenu et les comorbidités renseignées.",
@@ -218,8 +218,8 @@
     },
     {
       "slug": "materia",
-      "name_tag": "outil cabinet",
-      "title": "Materia",
+      "name_tag": "Homéopathie",
+      "title": "Materia Medica",
       "card_desc": "Un aide-mémoire homéopathique indexant 606 pathologies et 326 souches, avec recherche en nuage.",
       "desc": "Un aide-mémoire d'homéopathie qui indexe 606 pathologies et 326 souches. La recherche fonctionne en nuage de mots : pour un symptôme donné, les souches les plus citées apparaissent en premier, pour retrouver rapidement le bon remède en consultation.",
       "features": [
@@ -254,7 +254,7 @@
     },
     {
       "slug": "nextcare-manager",
-      "name_tag": "outil cabinet",
+      "name_tag": "facturation NEXTCARE",
       "title": "NEXTCARE Manager",
       "card_desc": "Import CSV des actes, calcul automatique de la part patient et des remboursements, export PDF feuille par feuille.",
       "desc": "Import CSV des actes facturés à la compagnie NEXTCARE, avec calcul automatique de la part patient, des remboursements et de la remise applicable. Export PDF possible feuille par feuille ou en bloc pour l'ensemble d'une période.",
@@ -290,7 +290,7 @@
     },
     {
       "slug": "soretras-manager",
-      "name_tag": "outil cabinet",
+      "name_tag": "facturation SORETRAS",
       "title": "SORETRAS Manager",
       "card_desc": "Base de patients, suivi des bordereaux mensuels, bilans annuels et statut d'envoi pour la compagnie SORETRAS.",
       "desc": "Une base de patients dédiée à la compagnie SORETRAS, avec suivi des bordereaux mensuels, des bilans annuels et du statut d'envoi de chaque dossier, pour ne plus perdre le fil des dossiers en attente.",
@@ -326,7 +326,7 @@
     },
     {
       "slug": "rdv-cbh",
-      "name_tag": "outil cabinet",
+      "name_tag": "Mon RDV - Mon Médecin",
       "title": "RDV CBH",
       "card_desc": "L'application de gestion des rendez-vous du cabinet, utilisée par le secrétariat et le médecin, avec demande d'annulation ou de report côté patient soumise à validation.",
       "desc": "RDV CBH est l'application interne de gestion des rendez-vous du cabinet : le secrétariat et le médecin y créent, modifient et suivent l'agenda des consultations. Le patient peut, de son côté, demander une annulation ou un report ; la modification ne devient effective qu'après validation du médecin, pour garder un agenda toujours fiable.",
@@ -398,7 +398,7 @@
     },
     {
       "slug": "acupro",
-      "name_tag": "outil cabinet",
+      "name_tag": "acupuncture",
       "title": "ACUPRO",
       "card_desc": "Un aide-mémoire d'acupuncture : technique des points, cartographie des méridiens et correspondances par pathologie.",
       "desc": "Un aide-mémoire d'acupuncture pensé pour la pratique : technique de chaque point, cartographie des méridiens et correspondances classées par pathologie, pour retrouver rapidement le bon point pendant la consultation.",
@@ -428,6 +428,42 @@
       ],
       "visual_style": "dark",
       "action_primary_label": "Demander un accès",
+      "action_primary_url": "#",
+      "action_secondary_label": "Voir la documentation",
+      "action_secondary_url": "#"
+    },
+    {
+      "slug": "mes-rdv",
+      "name_tag": "Agenda personnel & Professionnel",
+      "title": "MES RDV",
+      "card_desc": "Un agenda unique pour tous les rendez-vous, personnels et professionnels, avec rappels et vue d'ensemble.",
+      "desc": "MES RDV réunit dans un seul agenda les rendez-vous personnels et professionnels, avec des rappels automatiques avant chaque échéance et une vue claire par jour, semaine ou mois, pour ne plus jongler entre plusieurs calendriers.",
+      "features": [
+        "Agenda personnel et professionnel réunis en un seul endroit",
+        "Rappels automatiques avant chaque rendez-vous",
+        "Vue par jour, semaine ou mois"
+      ],
+      "screen_label": "mes rdv — aperçu",
+      "rows": [
+        {
+          "label": "Aujourd'hui",
+          "value": "3 rendez-vous"
+        },
+        {
+          "label": "Prochain",
+          "value": "réunion, 14h30"
+        },
+        {
+          "label": "Rappel",
+          "value": "dans 30 min"
+        },
+        {
+          "label": "Cette semaine",
+          "value": "9 rendez-vous"
+        }
+      ],
+      "visual_style": "coral",
+      "action_primary_label": "Télécharger l'application",
       "action_primary_url": "#",
       "action_secondary_label": "Voir la documentation",
       "action_secondary_url": "#"
