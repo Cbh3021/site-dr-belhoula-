@@ -281,7 +281,8 @@ const content = {
         {m:"NC", t:"NEXTCARE Manager", c:"Gestion de cabinet", d:"Import CSV des actes, calcul automatique de la part patient, des remboursements et de la remise, export PDF feuille par feuille ou en bloc.", f:["Import CSV","Calcul auto. des remboursements","Export PDF"]},
         {m:"SR", t:"SORETRAS Manager", c:"Gestion de cabinet", d:"Base de patients, suivi des bordereaux mensuels, bilans annuels et statut d'envoi, pour ne plus perdre le fil des dossiers en attente.", f:["Base patients","Bilans annuels","Suivi des envois"]},
         {m:"CB", t:"RDV CBH", c:"Gestion de cabinet", d:"Agenda des rendez-vous piloté par le secrétariat et le médecin ; le patient peut demander une annulation ou un report, effectif uniquement après validation du médecin.", f:["Agenda partagé secrétariat / médecin","Demande patient soumise à validation","Historique des modifications"]},
-        {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"Un aide-mémoire d'acupuncture pensé pour la pratique : technique des points, cartographie des méridiens et correspondances par pathologie, pour retrouver rapidement le bon point en consultation.", f:["Technique des points","Cartographie des méridiens","Recherche par pathologie"]}
+        {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"Un aide-mémoire d'acupuncture pensé pour la pratique : technique des points, cartographie des méridiens et correspondances par pathologie, pour retrouver rapidement le bon point en consultation.", f:["Technique des points","Cartographie des méridiens","Recherche par pathologie"]},
+        {m:"MR", t:"MES RDV", c:"Agenda personnel &amp; professionnel", d:"Tous les rendez-vous, personnels ou professionnels, ponctuels ou récurrents, réunis en un seul endroit, avec une notification fiable envoyée avant chaque échéance, même hors connexion.", f:["Rendez-vous personnels et professionnels réunis","Ponctuels ou récurrents (quotidien, hebdomadaire, mensuel…)","Notification fiable même sans connexion"]}
       ]
     },
     footer:{
@@ -335,7 +336,8 @@ const content = {
         {m:"NC", t:"NEXTCARE Manager", c:"Practice management", d:"CSV import of procedures, automatic calculation of patient share, reimbursements and discount rate, PDF export sheet-by-sheet or in bulk.", f:["CSV import","Auto. reimbursement calc.","PDF export"]},
         {m:"SR", t:"SORETRAS Manager", c:"Practice management", d:"A patient database, monthly claim-sheet tracking, annual summaries and send status, so nothing pending gets lost.", f:["Patient database","Annual summaries","Send-status tracking"]},
         {m:"CB", t:"RDV CBH", c:"Practice management", d:"Appointment schedule managed by the front desk and the physician; the patient can request a cancellation or reschedule, effective only after the doctor's validation.", f:["Shared front-desk / physician schedule","Patient request pending validation","Change history"]},
-        {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"An acupuncture quick-reference built for practice: point technique, a meridian map, and condition-based correspondences to find the right point during consultation.", f:["Point technique","Meridian map","Condition search"]}
+        {m:"AC", t:"ACUPRO", c:"Acupuncture", d:"An acupuncture quick-reference built for practice: point technique, a meridian map, and condition-based correspondences to find the right point during consultation.", f:["Point technique","Meridian map","Condition search"]},
+        {m:"MR", t:"MES RDV", c:"Personal &amp; professional agenda", d:"Every appointment, personal or professional, one-off or recurring, brought together in one place, with a reliable notification sent before each deadline — even without an internet connection.", f:["Personal and professional appointments in one place","One-off or recurring (daily, weekly, monthly…)","Reliable notification even offline"]}
       ]
     },
     footer:{
@@ -389,7 +391,8 @@ const content = {
         {m:"تأ", t:"NEXTCARE Manager", c:"تسيير العيادة", d:"استيراد بيانات CSV، احتساب آلي لحصة المريض والمبالغ المسترجعة ونسبة التخفيض، وتصدير PDF لكل كشف أو دفعة واحدة.", f:["استيراد CSV","احتساب آلي للاسترجاع","تصدير PDF"]},
         {m:"سو", t:"SORETRAS Manager", c:"تسيير العيادة", d:"قاعدة بيانات للمرضى، متابعة الكشوفات الشهرية والحصائل السنوية وحالة الإرسال.", f:["قاعدة بيانات المرضى","حصائل سنوية","متابعة الإرسال"]},
         {m:"كب", t:"RDV CBH", c:"تسيير العيادة", d:"جدول مواعيد يديره السكرتارية والطبيب؛ يمكن للمريض طلب إلغاء أو تأجيل الموعد، ولا يصبح ذلك ساري المفعول إلا بعد موافقة الطبيب.", f:["جدول مشترك بين السكرتارية والطبيب","طلب المريض يخضع لموافقة الطبيب","سجل التعديلات"]},
-        {m:"وخ", t:"ACUPRO", c:"الوخز بالإبر", d:"دليل مرجعي للوخز بالإبر مصمم للممارسة: تقنية النقاط، خريطة المسارات (الميريديان)، ومطابقات حسب الحالة المرضية، لإيجاد النقطة المناسبة بسرعة أثناء الاستشارة.", f:["تقنية النقاط","خريطة المسارات","بحث حسب الحالة"]}
+        {m:"وخ", t:"ACUPRO", c:"الوخز بالإبر", d:"دليل مرجعي للوخز بالإبر مصمم للممارسة: تقنية النقاط، خريطة المسارات (الميريديان)، ومطابقات حسب الحالة المرضية، لإيجاد النقطة المناسبة بسرعة أثناء الاستشارة.", f:["تقنية النقاط","خريطة المسارات","بحث حسب الحالة"]},
+        {m:"مو", t:"مواعيدي", c:"أجندة شخصية ومهنية", d:"كل المواعيد، الشخصية أو المهنية، العرضية أو المتكررة، مجمّعة في مكان واحد، مع إشعار موثوق يُرسل قبل كل موعد، حتى دون اتصال بالتطبيق.", f:["مواعيد شخصية ومهنية في مكان واحد","مواعيد عرضية أو متكررة (يوميا، أسبوعيا، شهريا…)","إشعار موثوق حتى دون اتصال"]}
       ]
     },
     footer:{
