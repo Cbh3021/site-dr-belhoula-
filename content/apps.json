@@ -361,42 +361,6 @@
       "action_secondary_url": "#"
     },
     {
-      "slug": "rdv-apci",
-      "name_tag": "application patient",
-      "title": "RDV APCI",
-      "card_desc": "L'application patient pour suivre tous ses rendez-vous médicaux ou autres, avec un rappel avant chaque échéance.",
-      "desc": "RDV APCI est pensée pour le patient : elle centralise tous les rendez-vous, médicaux ou non, et envoie un rappel avant chaque échéance. Fini les rendez-vous notés sur un bout de papier ou oubliés — tout est regroupé au même endroit.",
-      "features": [
-        "Ajout de rendez-vous médicaux ou personnels en quelques secondes",
-        "Rappel automatique par notification avant chaque rendez-vous",
-        "Vue d'ensemble de tous les rendez-vous à venir, classés par date"
-      ],
-      "screen_label": "rdv apci — aperçu",
-      "rows": [
-        {
-          "label": "Prochain rdv",
-          "value": "cardiologue, jeudi"
-        },
-        {
-          "label": "Rappel",
-          "value": "dans 2 jours"
-        },
-        {
-          "label": "À venir",
-          "value": "3 rendez-vous"
-        },
-        {
-          "label": "Dernier ajouté",
-          "value": "analyse sanguine"
-        }
-      ],
-      "visual_style": "coral",
-      "action_primary_label": "Télécharger l'application",
-      "action_primary_url": "#",
-      "action_secondary_label": "Voir la documentation",
-      "action_secondary_url": "#"
-    },
-    {
       "slug": "acupro",
       "name_tag": "acupuncture",
       "title": "ACUPRO",
