@@ -436,12 +436,12 @@
       "slug": "mes-rdv",
       "name_tag": "Agenda personnel & Professionnel",
       "title": "MES RDV",
-      "card_desc": "Un agenda unique pour tous les rendez-vous, personnels et professionnels, avec rappels et vue d'ensemble.",
-      "desc": "MES RDV réunit dans un seul agenda les rendez-vous personnels et professionnels, avec des rappels automatiques avant chaque échéance et une vue claire par jour, semaine ou mois, pour ne plus jongler entre plusieurs calendriers.",
+      "card_desc": "Gestion des rendez-vous personnels et professionnels, ponctuels ou récurrents, avec notification même hors connexion.",
+      "desc": "MES RDV centralise tous les rendez-vous, personnels ou professionnels, qu'ils soient ponctuels ou récurrents. Une notification est envoyée avant chaque échéance, même lorsque l'application n'est pas connectée à internet, pour ne jamais manquer un rendez-vous.",
       "features": [
-        "Agenda personnel et professionnel réunis en un seul endroit",
-        "Rappels automatiques avant chaque rendez-vous",
-        "Vue par jour, semaine ou mois"
+        "Rendez-vous personnels et professionnels réunis en un seul endroit",
+        "Rendez-vous ponctuels ou récurrents (quotidien, hebdomadaire, mensuel...)",
+        "Notification fiable même sans connexion à l'application"
       ],
       "screen_label": "mes rdv — aperçu",
       "rows": [
