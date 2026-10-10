@@ -6,126 +6,328 @@
 <title>Applications — Dr Hédi Belhoula</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="assets/theme.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
+  :root{
+    --paper:#F1F5F3;
+    --paper-2:#E7EDE9;
+    --ink:#0E2A2C;
+    --ink-soft:#3C5254;
+    --teal:#155A5B;
+    --teal-deep:#0B3839;
+    --coral:#DD5A3C;
+    --coral-deep:#9A3B25;
+    --border:rgba(14,42,44,0.12);
+    --border-strong:rgba(14,42,44,0.22);
+    --radius:10px;
+    --font-display:'Fraunces', serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  header{position:sticky;top:0;background:rgba(241,245,243,0.92);backdrop-filter:blur(6px);border-bottom:1px solid var(--border);z-index:10;}
+  nav.wrap{display:flex;align-items:center;justify-content:space-between;height:68px;}
+  .brand{text-decoration:none;display:flex;align-items:center;gap:10px;}
+  .brand .dot{width:8px;height:8px;border-radius:50%;background:var(--coral);display:inline-block;flex-shrink:0;}
+  .brand-name{font-family:var(--font-display);font-weight:600;font-size:17px;letter-spacing:-0.01em;line-height:1.2;}
+  .brand-sub{font-family:var(--font-mono);font-size:11px;color:var(--ink-soft);letter-spacing:0.02em;line-height:1.3;}
+  .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-size:14px;}
+  .nav-links a{text-decoration:none;color:var(--ink-soft);transition:color .15s;}
+  .nav-links a:hover{color:var(--ink);}
+  .btn{font-family:var(--font-body);font-size:14px;font-weight:500;padding:10px 18px;border-radius:var(--radius);border:1px solid var(--border-strong);background:transparent;color:var(--ink);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:all .15s;}
+  .btn:hover{background:var(--paper-2);}
+  .btn.primary{background:var(--teal);border-color:var(--teal);color:#fff;}
+  .btn.primary:hover{background:var(--teal-deep);}
+  .btn:focus-visible{outline:2px solid var(--coral);outline-offset:2px;}
+
   .hero{padding:60px 0 44px;border-bottom:1px solid var(--border);}
-  h1{font-size:clamp(30px,4.5vw,42px);line-height:1.12;margin:0 0 16px;max-width:600px;}
+  .eyebrow{font-family:var(--font-mono);font-size:12.5px;letter-spacing:0.06em;color:var(--coral-deep);margin:0 0 16px;display:flex;align-items:center;gap:10px;}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--coral-deep);display:inline-block;}
+  h1{font-family:var(--font-display);font-weight:500;font-size:clamp(30px,4.5vw,42px);line-height:1.12;letter-spacing:-0.015em;margin:0 0 16px;max-width:600px;}
   .lede{font-size:16px;color:var(--ink-soft);max-width:520px;margin:0;}
+
+  .app-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;padding:34px 0 12px;}
+  .app-card-summary{display:block;text-decoration:none;background:#fff;border:1px solid var(--border);border-radius:16px;padding:24px;box-shadow:0 10px 28px rgba(14,42,44,.06);transition:transform .18s,box-shadow .18s,border-color .18s;}
+  .app-card-summary:hover{transform:translateY(-4px);box-shadow:0 20px 42px rgba(14,42,44,.12);border-color:rgba(221,90,60,.4);}
+  .app-card-kicker{font-family:var(--font-mono);font-size:11px;color:var(--coral-deep);background:#FBE7E0;display:inline-block;padding:5px 9px;border-radius:6px;}
+  .app-card-summary h2{font-family:var(--font-display);font-weight:500;font-size:24px;margin:15px 0 8px;}
+  .app-card-summary p{font-size:14px;color:var(--ink-soft);margin:0 0 18px;}
+  .app-card-link{font-family:var(--font-mono);font-size:11px;color:var(--teal);}
+  .pitch-preview{position:relative;display:block;margin:16px 0 18px;overflow:hidden;border:1px solid var(--border);border-radius:10px;background:#edf3f2;text-decoration:none;}
+  .pitch-preview img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .25s ease,filter .25s ease;}
+  .pitch-hover-popup{position:absolute;left:50%;top:50%;z-index:2;padding:10px 13px;border:1px solid rgba(255,255,255,.45);border-radius:999px;background:rgba(7,63,64,.94);color:#fff;font:600 10px/1 var(--font-mono);white-space:nowrap;opacity:0;transform:translate(-50%,-42%);transition:opacity .2s ease,transform .2s ease;}
+  .pitch-preview:hover img{transform:scale(1.04);filter:brightness(.72);}
+  .pitch-preview:hover .pitch-hover-popup{opacity:1;transform:translate(-50%,-50%);}
+  .portfolio-app-cards{grid-template-columns:repeat(2,1fr);padding-top:38px;padding-bottom:34px;}
+  .portfolio-app-card{position:relative;min-height:218px;overflow:hidden;}
+  .portfolio-app-card::after{content:"";position:absolute;right:-24px;bottom:-30px;width:112px;height:112px;border:1px solid rgba(21,90,91,.15);border-radius:50%;}
+  .app-card-number{display:block;margin-bottom:12px;color:var(--coral);font:700 11px/1 var(--font-mono);letter-spacing:.08em;}
 
   .app-detail{padding:56px 0;border-bottom:1px solid var(--border);}
   .app-detail:last-of-type{border-bottom:none;}
   .app-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;}
-  .app-visual{background:var(--teal-deep);border-radius:var(--radius-lg);min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;}
+  .app-visual{background:var(--teal-deep);border-radius:16px;min-height:280px;padding:24px;display:flex;flex-direction:column;justify-content:space-between;color:#fff;}
   .app-visual.alt{background:var(--coral);}
   .app-visual .screen-label{font-family:var(--font-mono);font-size:11px;opacity:0.7;}
-  .fake-ui{background:rgba(255,255,255,0.1);border-radius:var(--radius);padding:16px;}
+  .fake-ui{background:rgba(255,255,255,0.1);border-radius:10px;padding:16px;}
   .fake-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:13px;}
   .fake-row:last-child{border-bottom:none;}
   .fake-pill{background:rgba(255,255,255,0.18);border-radius:20px;padding:3px 10px;font-size:11px;}
 
-  .app-name-tag{font-family:var(--font-mono);font-size:12px;color:var(--coral-deep);background:var(--coral-tint);display:inline-block;padding:5px 12px;border-radius:999px;margin-bottom:16px;}
-  .app-detail h2{font-size:27px;margin:0 0 12px;}
+  .app-name-tag{font-family:var(--font-mono);font-size:12px;color:var(--coral-deep);background:#FBE7E0;display:inline-block;padding:5px 11px;border-radius:6px;margin-bottom:16px;}
+  .app-detail h2{font-family:var(--font-display);font-weight:500;font-size:27px;margin:0 0 12px;letter-spacing:-0.01em;}
   .app-detail p.desc{font-size:15px;color:var(--ink-soft);margin:0 0 24px;}
   .feature-list{list-style:none;margin:0 0 28px;padding:0;}
   .feature-list li{display:flex;gap:10px;font-size:14.5px;margin-bottom:12px;color:var(--ink);}
   .feature-list li::before{content:"→";color:var(--coral);flex-shrink:0;}
-  html[dir="rtl"] .feature-list li::before{content:"←";}
   .app-actions{display:flex;gap:10px;flex-wrap:wrap;}
 
   .how-it-works{padding:56px 0;}
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
-  .step{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:22px;}
+  .step{background:#fff;border:1px solid var(--border);border-radius:12px;padding:22px;}
   .step-num{font-family:var(--font-mono);font-size:12px;color:var(--coral-deep);margin-bottom:10px;}
-  .step h3{font-family:var(--font-body);font-size:15px;font-weight:600;margin:0 0 6px;}
-  html[lang="ar"] .step h3{font-family:var(--font-body-ar);}
+  .step h3{font-size:15px;font-weight:600;margin:0 0 6px;}
   .step p{font-size:13.5px;color:var(--ink-soft);margin:0;}
 
-  .disclaimer-box{background:var(--paper-2);border-radius:var(--radius);padding:20px 24px;font-size:13.5px;color:var(--ink-soft);margin:8px 0 56px;}
+  .disclaimer-box{
+    background:var(--paper-2);border-radius:12px;padding:20px 24px;font-size:13.5px;
+    color:var(--ink-soft);margin:8px 0 56px;
+  }
 
-  .newsletter{background:var(--ink);color:#fff;border-radius:var(--radius-lg);padding:44px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:60px;}
-  .newsletter h2{color:#fff;font-size:24px;margin:0 0 8px;}
+  .newsletter{background:var(--ink);color:#fff;border-radius:16px;padding:44px 40px;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;margin-bottom:60px;}
+  .newsletter h2{color:#fff;font-family:var(--font-display);font-size:24px;font-weight:500;margin:0 0 8px;}
   .newsletter p{color:rgba(255,255,255,0.65);font-size:14px;margin:0;max-width:340px;}
   .nl-form{display:flex;gap:8px;flex-wrap:wrap;}
-  .nl-form input{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:999px;padding:11px 16px;color:#fff;font-family:var(--font-body);font-size:14px;width:220px;}
+  .nl-form input{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:var(--radius);padding:11px 14px;color:#fff;font-family:var(--font-body);font-size:14px;width:220px;}
   .nl-form input::placeholder{color:rgba(255,255,255,0.45);}
+  .nl-form .btn.primary{background:var(--coral);border-color:var(--coral);}
+  .nl-form .btn.primary:hover{background:var(--coral-deep);}
+
+  footer{max-width:1080px;margin:0 auto;padding:0 28px 48px;font-size:13px;color:var(--ink-soft);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;}
+  footer a{text-decoration:none;color:var(--ink-soft);}
 
   @media (max-width:760px){
+    .nav-links{display:none;}
+    .app-cards,.portfolio-app-cards{grid-template-columns:1fr;padding-top:24px;}
     .app-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     .newsletter{flex-direction:column;align-items:flex-start;}
   }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
 </style>
+  <link rel="stylesheet" href="pro.css">
+  <link rel="stylesheet" href="pro-header.css">
 </head>
 <body>
 
 <header class="site-header">
-  <nav class="site-nav">
-    <a class="brand" href="index.html">
-      <span class="dot"></span>
-      <span>
-        <span class="brand-name" id="js-brand-name" style="display:block;">Dr Hédi Belhoula</span>
-        <span class="brand-sub" id="js-brand-sub" style="display:block;">cabinet de médecine générale</span>
+  <div class="wrap site-header-inner">
+    <a class="site-brand" href="index.html#a-propos" aria-label="À propos — Dr Hédi Belhoula">
+      <span class="site-brand-mark">CBH</span>
+      <span class="site-brand-copy">
+        <strong id="js-brand-name">Dr Hédi Belhoula</strong>
+        <small id="js-brand-sub">Médecin &amp; Développeur</small>
       </span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" data-i18n="nav_home"></a></li>
-      <li><a href="actualites.html" data-i18n="nav_news"></a></li>
-      <li><a href="applications.html" class="active" data-i18n="nav_apps"></a></li>
-    </ul>
-    <div class="nav-right">
-      <div class="langswitch">
-        <button data-lang="fr">FR</button>
-        <button data-lang="ar">ع</button>
-        <button data-lang="en">EN</button>
-      </div>
-      <a class="btn coral" href="https://rdv-paiement.onrender.com/reserver" target="_blank" rel="noopener" data-i18n="nav_teleconsult"></a>
-      <a class="btn primary" href="actualites.html#newsletter" data-i18n="nav_subscribe"></a>
+    <nav class="site-nav" aria-label="Navigation principale">
+      <a href="index.html">Portfolio</a>
+      <a href="applications.html">Applications</a>
+      <a href="actualites.html#articles">Articles</a>
+      <a href="actualites.html#piliers">Prévention</a>
+      <a href="actualites.html#newsletter">Newsletter</a>
+    </nav>
+    <a class="site-teleconsult" href="https://rdv-paiement.onrender.com/reserver" target="_blank" rel="noopener noreferrer">Téléconsultation</a>
+    <div class="langswitch site-langs lang-dropdown" data-lang-dropdown>
+      <button type="button" class="lang-trigger" aria-haspopup="listbox" aria-expanded="false" aria-controls="langMenu">
+        <span class="lang-trigger-text">Langue</span>
+        <svg class="lang-chevron" viewBox="0 0 12 8" aria-hidden="true"><path d="M1 1l5 5 5-5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <ul class="lang-menu" id="langMenu" role="listbox" aria-label="Choisir la langue" hidden>
+        <li role="none">
+          <button type="button" class="lang-option" role="option" data-lang="en" aria-label="English">
+            <span class="lang-flag" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="3" height="2" fill="#00247d"/><g stroke="#fff" stroke-width="0.4"><path d="M0,0 L3,2"/><path d="M3,0 L0,2"/></g><g stroke="#cf142b" stroke-width="0.15"><path d="M0,0 L3,2"/><path d="M3,0 L0,2"/></g><g stroke="#fff" stroke-width="0.65"><path d="M1.5,0 L1.5,2"/><path d="M0,1 L3,1"/></g><g stroke="#cf142b" stroke-width="0.35"><path d="M1.5,0 L1.5,2"/><path d="M0,1 L3,1"/></g></svg></span>
+            <span class="lang-name">Anglais</span>
+          </button>
+        </li>
+        <li role="none">
+          <button type="button" class="lang-option" role="option" data-lang="fr" aria-label="Français">
+            <span class="lang-flag" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="1" height="2" fill="#0055A4"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#EF4135"/></svg></span>
+            <span class="lang-name">Français</span>
+          </button>
+        </li>
+        <li role="none">
+          <button type="button" class="lang-option" role="option" data-lang="ar" aria-label="العربية">
+            <span class="lang-flag" aria-hidden="true"><svg viewBox="0 0 3 2" preserveAspectRatio="xMidYMid slice"><rect width="3" height="2" fill="#E70013"/><circle cx="1.5" cy="1" r="0.5" fill="#fff"/><circle cx="1.62" cy="1" r="0.4" fill="#E70013"/><path d="M1.60,0.87 L1.6292,0.9598 L1.7236,0.9598 L1.6472,1.0153 L1.6764,1.1052 L1.60,1.0497 L1.5236,1.1052 L1.5528,1.0153 L1.4764,0.9598 L1.5708,0.9598 Z" fill="#fff"/></svg></span>
+            <span class="lang-name">Arabe</span>
+          </button>
+        </li>
+      </ul>
     </div>
-  </nav>
+  </div>
 </header>
 
 <main class="wrap">
 
   <div class="hero">
-    <p class="eyebrow" id="js-eyebrow">médecin — développeur</p>
-    <h1 id="js-h1">Des outils numériques conçus pour le soin, pas pour le marketing.</h1>
-    <p class="lede" id="js-lede">Chaque application est née d'un problème rencontré en consultation. Elles sont pensées, testées et utilisées dans mon propre cabinet avant d'être partagées.</p>
+    <p class="eyebrow">médecin — développeur</p>
+    <h1>Des outils numériques conçus pour le soin, pas pour le marketing.</h1>
+    <p class="lede">Chaque application est née d'un problème rencontré en consultation. Elles sont pensées, testées et utilisées dans mon propre cabinet avant d'être partagées.</p>
   </div>
 
-  <div id="js-apps-detail"></div>
-
-  <div class="how-it-works">
-    <p class="app-name-tag" style="background:var(--paper-2);color:var(--ink-soft);" id="js-hiw-tag">comment ça marche</p>
-    <h2 style="font-size:26px;margin:16px 0 0;" id="js-hiw-title">De l'idée à l'usage réel en cabinet</h2>
-    <div class="steps" id="js-steps"></div>
+  <div class="app-cards portfolio-app-cards" id="js-app-cards" aria-label="Applications du portfolio">
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">01</span>
+      <span class="app-card-kicker">Suivi de grossesse</span>
+      <a class="pitch-preview" href="assets/GestaClic.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint GestaClic">
+        <img src="assets/pitch-preview/gestaclic-slide-1.png" alt="Aperçu de la première diapositive du pitch GestaClic">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>GestaClic</h2>
+      <p>Suivi de grossesse pensé pour la consultation, avec datation automatique et repères par trimestre.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">02</span>
+      <span class="app-card-kicker">Pédiatrie</span>
+      <a class="pitch-preview" href="assets/PediaClic.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint PédiaClic">
+        <img src="assets/pitch-preview/pediaclic-slide-1.png" alt="Aperçu de la première diapositive du pitch PédiaClic">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>PédiaClic</h2>
+      <p>Poids, taille, IMC, périmètre crânien : courbes OMS et calendrier vaccinal PEV Tunisie, intégrés dans un dossier patient unique.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">03</span>
+      <span class="app-card-kicker">Cardiologie</span>
+      <a class="pitch-preview" href="assets/ProfilTensionnelPatient.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Profil Tensionnel">
+        <img src="assets/pitch-preview/profil-tensionnel-slide-1.png" alt="Aperçu de la première diapositive du pitch Profil Tensionnel">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Profil Tensionnel</h2>
+      <p>Suivi longitudinal de la tension artérielle, classification automatique, courbe de tendance, évaluation du RCV et orientation thérapeutique conformes aux recommandations ESC/ESH 2023 et SCORE2 (ESC 2021).</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">04</span>
+      <span class="app-card-kicker">Biologie médicale</span>
+      <a class="pitch-preview" href="assets/SuiviBiologiquePatients.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Suivi Biologique Patients">
+        <img src="assets/pitch-preview/suivibio-slide-1.png" alt="Aperçu de la première diapositive du pitch Suivi Biologique Patients">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Suivi Biologique Patients</h2>
+      <p>Tableau de bord pour suivre les bilans, détecter les anomalies et visualiser les évolutions.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">05</span>
+      <span class="app-card-kicker">Nutrition</span>
+      <a class="pitch-preview" href="assets/Mizen.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Mizen">
+        <img src="assets/pitch-preview/mizen-slide-1.png" alt="Aperçu de la première diapositive du pitch Mizen">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Mizen — ميزان</h2>
+      <p>Accompagnement nutritionnel adapté au régime tunisien et aux données de bio-impédance.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">06</span>
+      <span class="app-card-kicker">Homéopathie</span>
+      <a class="pitch-preview" href="assets/MateriaMedica.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Materia Medica">
+        <img src="assets/pitch-preview/materiamedica-slide-1.png" alt="Aperçu de la première diapositive du pitch Materia Medica">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Materia Medica</h2>
+      <p>606 pathologies indexées et 326 souches homéopathiques restructurées à partir de l'ouvrage de référence Poitevin, Saint-Jean, Demarque, Jouanny, pour une recherche rapide en consultation.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">07</span>
+      <span class="app-card-kicker">Gestion de cabinet</span>
+      <a class="pitch-preview" href="assets/NEXtCAREManager.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint NEXtCARE Manager">
+        <img src="assets/pitch-preview/nextcare-slide-1.png" alt="Aperçu de la première diapositive du pitch NEXtCARE Manager">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>NEXtCARE Manager</h2>
+      <p>Gestion des bordereaux, lecture auto et intégration du fichier CSV, calcul automatique, export et archivage PDF.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">08</span>
+      <span class="app-card-kicker">Gestion de cabinet</span>
+      <a class="pitch-preview" href="assets/SORETRASManager.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint SORETRAS Manager">
+        <img src="assets/pitch-preview/soretras-slide-1.png" alt="Aperçu de la première diapositive du pitch SORETRAS Manager">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>SORETRAS Manager</h2>
+      <p>Suivi des bordereaux, base patients, bilans annuels et statut des envois, calcul automatique, export et archivage PDF.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">09</span>
+      <span class="app-card-kicker">Application mobile</span>
+      <a class="pitch-preview" href="assets/RappelRDV.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Rappel RDV">
+        <img src="assets/pitch-preview/rappelrdv-slide-1.png" alt="Aperçu de la première diapositive du pitch Rappel RDV">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Rappel RDV</h2>
+      <p>Rappels de rendez-vous par catégorie (C. ordinaire, APCI, explorations…), notifications locales fiables même application fermée, uniques ou périodiques.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">10</span>
+      <span class="app-card-kicker">Téléconsultation</span>
+      <a class="pitch-preview" href="assets/Teleconsultation.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Téléconsultation">
+        <img src="assets/pitch-preview/teleconsultation-slide-1.png" alt="Aperçu de la première diapositive du pitch Téléconsultation">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Téléconsultation</h2>
+      <p>Réserver une téléconsultation et régler en ligne, en toute confiance.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">11</span>
+      <span class="app-card-kicker">Tabacologie</span>
+      <a class="pitch-preview" href="assets/LastClope.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Last Clope">
+        <img src="assets/pitch-preview/lastclope-slide-1.png" alt="Aperçu de la première diapositive du pitch Last Clope">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Last Clope</h2>
+      <p>Score de dépendance à la nicotine (Fagerström), calcul des paquets-années et recommandations de sevrage générées automatiquement selon le profil du patient.</p>
+    </article>
+    <article class="app-card-summary portfolio-app-card">
+      <span class="app-card-number">12</span>
+      <span class="app-card-kicker">Ostéoporose</span>
+      <a class="pitch-preview" href="assets/CalculateurOSIRIS.pptx" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint Calculateur OSIRIS">
+        <img src="assets/pitch-preview/osiris-slide-1.png" alt="Aperçu de la première diapositive du pitch Calculateur OSIRIS">
+        <span class="pitch-hover-popup">Ouvrir le pitch PowerPoint</span>
+      </a>
+      <h2>Calculateur OSIRIS</h2>
+      <p>Score OSIRIS de risque d'ostéoporose chez la femme ménopausée asymptomatique, calcul instantané et historique local, pour orienter l'indication d'une ostéodensitométrie.</p>
+    </article>
   </div>
 
-  <div class="disclaimer-box" id="js-disclaimer">
+  <div id="js-apps-detail">
+    <!-- rempli dynamiquement depuis content/apps.json -->
+  </div>
+
+  <div class="disclaimer-box">
     Ces applications sont des outils d'aide à l'organisation et à l'information. Elles ne posent aucun diagnostic et ne remplacent en aucun cas une consultation médicale. Tout partenariat ou intérêt commercial lié à un outil présenté ici serait explicitement mentionné.
   </div>
 
   <div class="newsletter">
     <div>
-      <h2 id="js-nl-title">Être informé des prochaines applications</h2>
-      <p id="js-nl-text">Un email lors de chaque nouvelle sortie ou mise à jour majeure, rien d'autre.</p>
+      <h2>Être informé des prochaines applications</h2>
+      <p>Un email lors de chaque nouvelle sortie ou mise à jour majeure, rien d'autre.</p>
     </div>
     <form class="nl-form" onsubmit="return false;">
-      <input type="email" data-i18n-ph="newsletter_email_placeholder" placeholder="votre@email.com" required>
-      <button class="btn primary" type="submit" data-i18n="nav_subscribe"></button>
+      <input type="email" placeholder="votre@email.com" required>
+      <button class="btn primary" type="submit">S'abonner</button>
     </form>
   </div>
 
 </main>
 
-<footer class="site-footer">
-  <div class="wrap">
-    <span id="js-footer-text">© 2026 Dr Hédi Belhoula — médecin généraliste</span>
-    <span><a href="#" data-i18n="footer_legal"></a> · <a href="#" data-i18n="footer_contact"></a></span>
-  </div>
+<footer>
+  <span id="js-footer-text">2026©Dr Hédi Belhoula — médecin généraliste</span>
+  <span><a href="#">Mentions légales</a> · <a href="#">Contact</a></span>
 </footer>
 
-<script src="assets/i18n.js"></script>
 <script>
 (function(){
   function escapeHtml(s){
@@ -133,70 +335,9 @@
       .replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
   }
 
-  var LOCAL = {
-    fr:{
-      eyebrow:"médecin — développeur",
-      h1:"Des outils numériques conçus pour le soin, pas pour le marketing.",
-      lede:"Chaque application est née d'un problème rencontré en consultation. Elles sont pensées, testées et utilisées dans mon propre cabinet avant d'être partagées.",
-      hiwTag:"comment ça marche",
-      hiwTitle:"De l'idée à l'usage réel en cabinet",
-      steps:[
-        {t:"Un problème observé", d:"Chaque application part d'une friction réelle rencontrée en consultation, jamais d'une idée abstraite."},
-        {t:"Un prototype testé", d:"Je développe une première version que j'utilise moi-même pendant plusieurs semaines avant tout partage."},
-        {t:"Un retour de confrères", d:"L'outil est ensuite affiné avec d'autres médecins généralistes avant d'être rendu public."}
-      ],
-      disclaimer:"Ces applications sont des outils d'aide à l'organisation et à l'information. Elles ne posent aucun diagnostic et ne remplacent en aucun cas une consultation médicale. Tout partenariat ou intérêt commercial lié à un outil présenté ici serait explicitement mentionné.",
-      discover:"Découvrir"
-    },
-    en:{
-      eyebrow:"physician — developer",
-      h1:"Digital tools designed for care, not for marketing.",
-      lede:"Each application was born from a problem met in consultation. They are designed, tested and used in my own practice before being shared.",
-      hiwTag:"how it works",
-      hiwTitle:"From idea to real use in the clinic",
-      steps:[
-        {t:"A problem observed", d:"Every application starts from a real friction met in consultation, never from an abstract idea."},
-        {t:"A tested prototype", d:"I build a first version and use it myself for several weeks before sharing it."},
-        {t:"Feedback from peers", d:"The tool is then refined with other general practitioners before being made public."}
-      ],
-      disclaimer:"These applications are organisation and information aids. They make no diagnosis and never replace a medical consultation. Any partnership or commercial interest linked to a tool shown here would be explicitly disclosed.",
-      discover:"Discover"
-    },
-    ar:{
-      eyebrow:"طبيب — مطوّر",
-      h1:"أدوات رقمية مصممة من أجل الرعاية، لا من أجل التسويق.",
-      lede:"كل تطبيق وُلد من مشكلة واجهتها في الاستشارة. تُصمَّم وتُختبَر وتُستخدَم في عيادتي الخاصة قبل مشاركتها.",
-      hiwTag:"كيف يعمل الأمر",
-      hiwTitle:"من الفكرة إلى الاستخدام الفعلي في العيادة",
-      steps:[
-        {t:"مشكلة ملاحظة", d:"كل تطبيق ينطلق من عائق حقيقي واجهته في الاستشارة، لا من فكرة مجردة."},
-        {t:"نموذج مُختبَر", d:"أطوّر نسخة أولى أستخدمها بنفسي لعدة أسابيع قبل أي مشاركة."},
-        {t:"آراء الزملاء", d:"تُصقَل الأداة بعد ذلك مع أطباء عامين آخرين قبل نشرها للعموم."}
-      ],
-      disclaimer:"هذه التطبيقات أدوات مساعدة على التنظيم والمعلومات. لا تضع أي تشخيص ولا تحل بأي حال محل الاستشارة الطبية. أي شراكة أو مصلحة تجارية مرتبطة بأداة معروضة هنا ستُذكر صراحة.",
-      discover:"اكتشف"
-    }
-  };
-
-  function applyLocal(lang){
-    var L = LOCAL[lang] || LOCAL.fr;
-    document.getElementById('js-eyebrow').textContent = L.eyebrow;
-    document.getElementById('js-h1').textContent = L.h1;
-    document.getElementById('js-lede').textContent = L.lede;
-    document.getElementById('js-hiw-tag').textContent = L.hiwTag;
-    document.getElementById('js-hiw-title').textContent = L.hiwTitle;
-    document.getElementById('js-steps').innerHTML = L.steps.map(function(s,i){
-      return '<div class="step"><p class="step-num">0' + (i+1) + '</p><h3>' + s.t + '</h3><p>' + s.d + '</p></div>';
-    }).join('');
-    document.getElementById('js-disclaimer').textContent = L.disclaimer;
-    document.querySelectorAll('#js-apps-detail .app-link-discover').forEach(function(a){ a.textContent = L.discover; });
-  }
-
   fetch('content/site.json').then(r => r.json()).then(site => {
     document.getElementById('js-brand-name').textContent = site.brand_name;
     document.getElementById('js-brand-sub').textContent = site.brand_sub;
-    document.getElementById('js-nl-title').textContent = site.newsletter_title;
-    document.getElementById('js-nl-text').textContent = site.newsletter_text;
     document.getElementById('js-footer-text').textContent = site.footer_text;
   }).catch(function(){});
 
@@ -229,14 +370,10 @@
       return '<div class="app-detail"><div class="app-grid">' +
         (reversed ? info + visual : visual + info) + '</div></div>';
     }).join('');
-    applyLocal((window.i18n && i18n.getLang()) || 'fr');
   }).catch(function(e){ console.error('Erreur de chargement de apps.json', e); });
-
-  document.addEventListener('langchange', function(e){ applyLocal(e.detail.lang); });
-
-  i18n.initLangSwitcher();
 })();
 </script>
 
+  <script src="header-lang.js" defer></script>
 </body>
 </html>

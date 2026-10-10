@@ -97,7 +97,23 @@ admin/
   config.yml               définit les formulaires d'édition
 uploads/                 images ajoutées depuis l'admin
 netlify.toml             configuration d'hébergement (aucun build requis)
+visit-counter.css / .js  compteur de visites de la page d'accueil
+netlify/functions/
+  visits.js               lit / incrémente le total (Netlify Blobs)
+  subscribe.js            inscription newsletter (Brevo)
 ```
+
+## Compteur de visites (page d'accueil)
+
+Une pastille fixe en bas à gauche (bas à droite en arabe) affiche le nombre total de
+visites et reste visible pendant tout le défilement.
+
+- Une visite = une session de navigation : recharger la page ne fait pas monter le compteur.
+- Le total est stocké côté Netlify (Netlify Blobs) via `netlify/functions/visits.js` :
+  aucune configuration ni variable d'environnement à ajouter.
+- Si la fonction est indisponible (ou en ouvrant le fichier en local), la pastille reste
+  simplement masquée.
+- Pour tester : le compteur ne fonctionne que sur le site déployé (ou avec `netlify dev`).
 
 ## Limites à connaître
 

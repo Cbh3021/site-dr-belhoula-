@@ -1,0 +1,81 @@
+/* Compteur de visites — pastille fixe, visible en permanence pendant le scroll */
+.visit-counter {
+  position: fixed;
+  inset-inline-start: max(18px, env(safe-area-inset-left));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 40; /* sous l'en-tête (z-index: 50) */
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 17px;
+  border: 1px solid rgba(244, 177, 159, .55);
+  border-radius: 999px;
+  background: linear-gradient(110deg, #073f40 0%, #0e5b57 60%, #13706a 100%);
+  color: #f3fbf9;
+  font: 500 12px/1 var(--font-body, 'IBM Plex Sans', system-ui, sans-serif);
+  letter-spacing: .01em;
+  box-shadow: 0 10px 28px rgba(5, 48, 46, .32);
+  backdrop-filter: blur(10px);
+  pointer-events: none; /* ne gêne jamais les clics sur le contenu */
+  user-select: none;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .45s ease, transform .45s ease;
+}
+.visit-counter[hidden] { display: none; }
+.visit-counter.is-ready { opacity: 1; transform: translateY(0); }
+
+.visit-counter__dot {
+  position: relative;
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #f4b19f;
+}
+.visit-counter__dot::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #f4b19f;
+  animation: visit-counter-pulse 2.4s ease-out infinite;
+}
+@keyframes visit-counter-pulse {
+  0%   { transform: scale(1);   opacity: .55; }
+  70%  { transform: scale(3);   opacity: 0; }
+  100% { transform: scale(3);   opacity: 0; }
+}
+
+.visit-counter__value {
+  font-size: 15px;
+  font-weight: 600;
+  color: #fff;
+  font-variant-numeric: tabular-nums; /* chiffres de largeur fixe : pas de saut pendant l'animation */
+}
+.visit-counter__label { color: #b8d5ce; }
+
+/* Lecteurs d'écran : annonce uniquement la valeur finale */
+.visit-counter__sr {
+  position: absolute;
+  width: 1px; height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .visit-counter {
+    inset-inline-start: max(12px, env(safe-area-inset-left));
+    bottom: max(12px, env(safe-area-inset-bottom));
+    padding: 8px 14px;
+    gap: 8px;
+    font-size: 11px;
+  }
+  .visit-counter__value { font-size: 13px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .visit-counter { transition: none; transform: none; }
+  .visit-counter__dot::after { animation: none; }
+}
+@media print { .visit-counter { display: none; } }
