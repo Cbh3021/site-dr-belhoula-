@@ -93,3 +93,19 @@ collections:
               - { label: "Bouton principal — lien", name: "action_primary_url", widget: "string", default: "#" }
               - { label: "Bouton secondaire — texte", name: "action_secondary_label", widget: "string" }
               - { label: "Bouton secondaire — lien", name: "action_secondary_url", widget: "string", default: "#" }
+
+      - name: "portfolio"
+        label: "Cartes du portfolio (page Applications)"
+        file: "content/portfolio.json"
+        fields:
+          - label: "Applications du portfolio"
+            name: "items"
+            widget: "list"
+            summary: "{{title}}"
+            hint: "L'ordre de la liste fixe la numérotation (01, 02, 03...). Glissez les éléments pour les réordonner."
+            fields:
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Catégorie (étiquette rose)", name: "kicker", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - { label: "Image d'aperçu", name: "image", widget: "image", required: false }
+              - { label: "Fichier du pitch PowerPoint", name: "pitch", widget: "file", required: false }

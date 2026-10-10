@@ -1,0 +1,88 @@
+{
+  "items": [
+    {
+      "title": "GestaClic",
+      "kicker": "Suivi de grossesse",
+      "description": "Suivi de grossesse pensé pour la consultation, avec datation automatique et repères par trimestre.",
+      "image": "assets/pitch-preview/gestaclic-slide-1.png",
+      "pitch": "assets/GestaClic.pptx"
+    },
+    {
+      "title": "PédiaClic",
+      "kicker": "Pédiatrie",
+      "description": "Poids, taille, IMC, périmètre crânien : courbes OMS et calendrier vaccinal PEV Tunisie, intégrés dans un dossier patient unique.",
+      "image": "assets/pitch-preview/pediaclic-slide-1.png",
+      "pitch": "assets/PediaClic.pptx"
+    },
+    {
+      "title": "Profil Tensionnel",
+      "kicker": "Cardiologie",
+      "description": "Suivi longitudinal de la tension artérielle, classification automatique, courbe de tendance, évaluation du RCV et orientation thérapeutique conformes aux recommandations ESC/ESH 2023 et SCORE2 (ESC 2021).",
+      "image": "assets/pitch-preview/profil-tensionnel-slide-1.png",
+      "pitch": "assets/ProfilTensionnelPatient.pptx"
+    },
+    {
+      "title": "Suivi Biologique Patients",
+      "kicker": "Biologie médicale",
+      "description": "Tableau de bord pour suivre les bilans, détecter les anomalies et visualiser les évolutions.",
+      "image": "assets/pitch-preview/suivibio-slide-1.png",
+      "pitch": "assets/SuiviBiologiquePatients.pptx"
+    },
+    {
+      "title": "Mizen — ميزان",
+      "kicker": "Nutrition",
+      "description": "Accompagnement nutritionnel adapté au régime tunisien et aux données de bio-impédance.",
+      "image": "assets/pitch-preview/mizen-slide-1.png",
+      "pitch": "assets/Mizen.pptx"
+    },
+    {
+      "title": "Materia Medica",
+      "kicker": "Homéopathie",
+      "description": "606 pathologies indexées et 326 souches homéopathiques restructurées à partir de l'ouvrage de référence Poitevin, Saint-Jean, Demarque, Jouanny, pour une recherche rapide en consultation.",
+      "image": "assets/pitch-preview/materiamedica-slide-1.png",
+      "pitch": "assets/MateriaMedica.pptx"
+    },
+    {
+      "title": "NEXtCARE Manager",
+      "kicker": "Gestion de cabinet",
+      "description": "Gestion des bordereaux, lecture auto et intégration du fichier CSV, calcul automatique, export et archivage PDF.",
+      "image": "assets/pitch-preview/nextcare-slide-1.png",
+      "pitch": "assets/NEXtCAREManager.pptx"
+    },
+    {
+      "title": "SORETRAS Manager",
+      "kicker": "Gestion de cabinet",
+      "description": "Suivi des bordereaux, base patients, bilans annuels et statut des envois, calcul automatique, export et archivage PDF.",
+      "image": "assets/pitch-preview/soretras-slide-1.png",
+      "pitch": "assets/SORETRASManager.pptx"
+    },
+    {
+      "title": "Rappel RDV",
+      "kicker": "Application mobile",
+      "description": "Rappels de rendez-vous par catégorie (C. ordinaire, APCI, explorations…), notifications locales fiables même application fermée, uniques ou périodiques.",
+      "image": "assets/pitch-preview/rappelrdv-slide-1.png",
+      "pitch": "assets/RappelRDV.pptx"
+    },
+    {
+      "title": "Téléconsultation",
+      "kicker": "Téléconsultation",
+      "description": "Réserver une téléconsultation et régler en ligne, en toute confiance.",
+      "image": "assets/pitch-preview/teleconsultation-slide-1.png",
+      "pitch": "assets/Teleconsultation.pptx"
+    },
+    {
+      "title": "Last Clope",
+      "kicker": "Tabacologie",
+      "description": "Score de dépendance à la nicotine (Fagerström), calcul des paquets-années et recommandations de sevrage générées automatiquement selon le profil du patient.",
+      "image": "assets/pitch-preview/lastclope-slide-1.png",
+      "pitch": "assets/LastClope.pptx"
+    },
+    {
+      "title": "Calculateur OSIRIS",
+      "kicker": "Ostéoporose",
+      "description": "Score OSIRIS de risque d'ostéoporose chez la femme ménopausée asymptomatique, calcul instantané et historique local, pour orienter l'indication d'une ostéodensitométrie.",
+      "image": "assets/pitch-preview/osiris-slide-1.png",
+      "pitch": "assets/CalculateurOSIRIS.pptx"
+    }
+  ]
+}
