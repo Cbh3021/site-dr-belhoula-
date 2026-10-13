@@ -118,6 +118,14 @@
     .steps{grid-template-columns:1fr;}
     .newsletter{flex-direction:column;align-items:flex-start;}
   }
+  .portfolio-app-card::after{pointer-events:none;}
+  .pitch-open{position:relative;z-index:1;display:inline-flex;align-items:center;margin-top:2px;padding:9px 15px;border-radius:999px;background:var(--teal);color:#fff;font:600 12px/1 var(--font-mono);text-decoration:none;transition:background .15s,transform .15s;}
+  .pitch-open:hover{background:var(--teal-deep);transform:translateY(-1px);}
+  .pv-pages{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:#dfe7e6;padding:14px;}
+  .pv-pages canvas{display:block;width:100%;max-width:1100px;height:auto;margin:0 auto 14px;background:#fff;border-radius:6px;box-shadow:0 4px 18px rgba(0,0,0,.18);}
+  .pv-pages .pv-msg{max-width:520px;margin:40px auto;text-align:center;font-size:14px;color:var(--ink-soft);}
+  .pv-pages iframe{width:100%;height:100%;min-height:70vh;border:0;background:#fff;}
+  @media (max-width:760px){.pv-box{width:100vw;height:100vh;border-radius:0;}.pv-pages{padding:8px;}.pv-bar a{display:none;}}
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
 
   .pv{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:rgba(7,40,41,.82);}
@@ -245,6 +253,7 @@
       preview +
       '<h2>' + escapeHtml(title) + '</h2>' +
       '<p>' + escapeHtml(app.description) + '</p>' +
+      (app.pitch ? '<a class="pitch-open" href="' + escapeAttr(app.pitch) + '" target="_blank" rel="noopener" aria-label="Ouvrir le pitch PowerPoint ' + escapeAttr(title) + '">Voir le pitch ›</a>' : '') +
       '</article>';
   }
   /*RENDER_END*/
@@ -294,25 +303,69 @@
 </script>
 
   <script src="header-lang.js?v=2" defer></script>
-<div class="pv" id="pitchViewer" hidden role="dialog" aria-modal="true" aria-label="Visionneuse du pitch"><div class="pv-box"><div class="pv-bar"><strong class="pv-title"></strong><span><a class="pv-download" href="#" download>Télécharger le PowerPoint</a><button type="button" data-pv-close aria-label="Fermer">×</button></span></div><iframe title="Pitch" allowfullscreen></iframe></div></div>
+<div class="pv" id="pitchViewer" hidden role="dialog" aria-modal="true" aria-label="Visionneuse du pitch"><div class="pv-box"><div class="pv-bar"><strong class="pv-title"></strong><span><a class="pv-download" href="#" download>Télécharger le PowerPoint</a><button type="button" data-pv-close aria-label="Fermer">×</button></span></div><div class="pv-pages" id="pvPages"></div></div></div>
 <script>
 (function () {
-  var modal = document.getElementById('pitchViewer'), frame = modal.querySelector('iframe'), title = modal.querySelector('.pv-title'), dl = modal.querySelector('.pv-download');
-  function closeViewer() { modal.hidden = true; frame.src = 'about:blank'; document.body.style.overflow = ''; }
-  // Clic sur un aperçu : affiche le PDF du pitch (même nom que le .pptx) dans la page ;
-  // si le PDF est introuvable, on retombe sur le comportement d'origine (ouverture du .pptx).
+  var PDFJS = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/';
+  var modal = document.getElementById('pitchViewer'), pages = document.getElementById('pvPages'),
+      title = modal.querySelector('.pv-title'), dl = modal.querySelector('.pv-download'), token = 0, loader = null;
+
+  function loadPdfJs() {
+    if (window.pdfjsLib) return Promise.resolve(window.pdfjsLib);
+    if (loader) return loader;
+    loader = new Promise(function (resolve, reject) {
+      var sc = document.createElement('script'); sc.src = PDFJS + 'pdf.min.js';
+      sc.onload = function () { window.pdfjsLib.GlobalWorkerOptions.workerSrc = PDFJS + 'pdf.worker.min.js'; resolve(window.pdfjsLib); };
+      sc.onerror = function () { loader = null; reject(new Error('pdf.js indisponible')); };
+      document.head.appendChild(sc);
+    });
+    return loader;
+  }
+  function closeViewer() { token++; modal.hidden = true; pages.innerHTML = ''; document.body.style.overflow = ''; }
+  function message(text) { pages.innerHTML = '<p class="pv-msg">' + text + '</p>'; }
+
+  function renderPdf(pdfUrl, my) {
+    return loadPdfJs().then(function (lib) { return lib.getDocument({ url: pdfUrl }).promise; }).then(function (pdf) {
+      pages.innerHTML = '';
+      var chain = Promise.resolve();
+      for (var n = 1; n <= pdf.numPages; n++) (function (num) {
+        chain = chain.then(function () {
+          if (my !== token) return;
+          return pdf.getPage(num).then(function (page) {
+            if (my !== token) return;
+            var base = page.getViewport({ scale: 1 });
+            var cssW = Math.min(pages.clientWidth - 28, 1100) || 800;
+            var ratio = Math.min(window.devicePixelRatio || 1, 2);
+            var vp = page.getViewport({ scale: (cssW / base.width) * ratio });
+            var canvas = document.createElement('canvas'); canvas.width = vp.width; canvas.height = vp.height;
+            canvas.setAttribute('aria-label', 'Diapositive ' + num + ' sur ' + pdf.numPages);
+            pages.appendChild(canvas);
+            return page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+          });
+        });
+      })(n);
+      return chain;
+    });
+  }
+  function fallbackIframe(pdfUrl) { pages.innerHTML = '<iframe title="Pitch" allowfullscreen src="' + pdfUrl + '#view=FitH"></iframe>'; }
+
+  // Clic sur l'aperçu ou sur « Voir le pitch » : affiche le pitch dans la page.
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a.pitch-preview');
+    var a = e.target.closest && e.target.closest('a.pitch-preview, a.pitch-open');
     if (!a) return;
     e.preventDefault();
-    var pptx = new URL(a.getAttribute('href'), location.href).href;
-    var pdf = pptx.replace(/\.pptx$/i, '.pdf');
-    fetch(pdf, { method: 'HEAD' }).then(function (r) {
-      if (!r.ok) throw new Error('pdf absent');
-      title.textContent = (a.getAttribute('aria-label') || '').replace('Ouvrir le pitch PowerPoint ', 'Pitch — ');
-      dl.href = pptx; frame.src = pdf + '#view=FitH';
-      modal.hidden = false; document.body.style.overflow = 'hidden';
-    }).catch(function () { window.location.href = pptx; });
+    var pptx = new URL(a.getAttribute('href'), location.href).href, pdf = pptx.replace(/\.pptx$/i, '.pdf'), my = ++token;
+    title.textContent = (a.getAttribute('aria-label') || '').replace('Ouvrir le pitch PowerPoint ', 'Pitch — ');
+    dl.href = pptx; modal.hidden = false; document.body.style.overflow = 'hidden';
+    message('Chargement du pitch…');
+    renderPdf(pdf, my).catch(function (err) {
+      if (my !== token) return;
+      console.error('Visionneuse :', err);
+      fetch(pdf, { method: 'HEAD' }).then(function (r) {
+        if (!r.ok) throw new Error('absent');
+        fallbackIframe(pdf);
+      }).catch(function () { closeViewer(); window.location.href = pptx; });
+    });
   });
   modal.addEventListener('click', function (e) { if (e.target === modal || (e.target.closest && e.target.closest('[data-pv-close]'))) closeViewer(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeViewer(); });

@@ -192,11 +192,14 @@ footer { border-top: 1px solid var(--border); }
   .tools-title-list { grid-template-columns: 1fr; }
 }
 
+/* Animation d'entrée en opacité seule : une transformation conservée sur <body>
+   (fill-mode "both") ferait de lui le bloc conteneur des éléments position:fixed
+   et décalerait la visionneuse de pitch tout en haut de la page. */
 @keyframes page-enter {
-  from { opacity: 0; transform: translateY(5px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
-body { animation: page-enter .32s ease-out both; }
+body { animation: page-enter .32s ease-out; }
 
 @media (max-width: 760px) {
   .wrap, .wrap-narrow { padding-left: 20px; padding-right: 20px; }
@@ -209,4 +212,9 @@ body { animation: page-enter .32s ease-out both; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+}
+
+/* Évite le défilement horizontal sur téléphone (sélecteur de langue qui dépassait). */
+@media (max-width: 760px) {
+  html, body { overflow-x: clip; }
 }
