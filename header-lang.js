@@ -1,6 +1,6 @@
 (function () {
-  var currentFile = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  if (currentFile === '') currentFile = 'index.html';
+  // Nom de la page courante, robuste : "/", "/applications", "/applications/", "/applications.html"
+  var currentFile = (window.location.pathname.replace(/\/+$/, '').split('/').pop() || 'index').toLowerCase();
   var currentPage = currentFile.replace(/\.html$/, '');
   var currentHash = window.location.hash.toLowerCase();
   document.querySelectorAll('.site-nav a').forEach(function (link) {
