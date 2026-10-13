@@ -56,3 +56,33 @@
     });
   });
 })();
+
+/* Menu : met en évidence la page (et la section) en cours, sans dépendre d'une classe écrite à la main. */
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll('.site-nav a[href]'));
+  if (!links.length) return;
+  var file = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  if (file === 'article.html') file = 'actualites.html';
+  function target(a) { var u = new URL(a.getAttribute('href'), location.href); return { file: (u.pathname.split('/').pop() || 'index.html').toLowerCase(), hash: u.hash.replace('#', '') }; }
+  function setActive(hash) {
+    var samePage = links.filter(function (a) { return target(a).file === file; });
+    var chosen = samePage.filter(function (a) { return target(a).hash === hash; })[0] || samePage[0];
+    links.forEach(function (a) {
+      var on = a === chosen;
+      a.classList.toggle('active', on);
+      if (on) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+  }
+  setActive(location.hash.replace('#', ''));
+  window.addEventListener('hashchange', function () { setActive(location.hash.replace('#', '')); });
+  // Page Actualités : suit la section visible à l'écran (Articles / Prévention / Newsletter).
+  if (file === 'actualites.html' && 'IntersectionObserver' in window) {
+    var ids = ['piliers', 'articles', 'newsletter'], seen = {};
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { seen[e.target.id] = e.isIntersecting ? e.intersectionRatio : 0; });
+      var best = ids.reduce(function (m, id) { return (seen[id] || 0) > (seen[m] || 0) ? id : m; }, ids[0]);
+      if (seen[best] > 0) setActive(best);
+    }, { rootMargin: '-90px 0px -45% 0px', threshold: [0, .1, .25, .5, .75, 1] });
+    ids.forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+  }
+})();

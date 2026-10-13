@@ -87,13 +87,14 @@ body:has(.ecg-wrap) .site-brand-mark {
 }
 .site-nav a:hover, .site-nav a:focus-visible { color: #fff; }
 .site-nav a.active {
-  color: #fff;
+  color: #0b3839;
   font-weight: 700;
-  background: rgba(255, 255, 255, .16);
+  background: #fff;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .22);
 }
+.site-nav a.active:hover, .site-nav a.active:focus-visible { color: #0b3839; }
 .site-nav a.active::after {
-  transform: scaleX(1);
-  background: #f4b19f;
+  transform: scaleX(0);
 }
 .site-nav a:hover::after, .site-nav a:focus-visible::after { transform: scaleX(1); }
 .site-langs {

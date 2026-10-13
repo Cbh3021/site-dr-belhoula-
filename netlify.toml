@@ -6,3 +6,20 @@
 # Le dossier netlify/functions contient une fonction serverless (subscribe.js)
 # qui gère l'inscription à la newsletter via Brevo, sans exposer la clé API.
 # visits.js alimente le compteur de visites de la page d'accueil (Netlify Blobs).
+
+# Le navigateur doit revérifier les fichiers du site à chaque visite
+# (sinon une ancienne feuille de style peut rester en cache après une mise à jour).
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
