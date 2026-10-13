@@ -120,16 +120,16 @@
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}*{transition:none !important;}}
 
-  .pv{position:fixed;inset:0;z-index:1000;display:flex;align-items:center;justify-content:center;padding:2.5vh 2.5vw;background:rgba(7,40,41,.78);}
-  .pv[hidden]{display:none;}
-  .pv-box{display:flex;flex-direction:column;width:min(1200px,100%);height:100%;max-height:92vh;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 24px 70px rgba(0,0,0,.4);}
+  .pv{position:fixed;top:0;left:0;right:0;bottom:0;z-index:1000;display:flex;align-items:center;justify-content:center;background:rgba(7,40,41,.82);}
+  .pv[hidden]{display:none !important;}
+  .pv-box{display:flex;flex-direction:column;width:min(1200px,96vw);height:90vh;overflow:hidden;border-radius:14px;background:#fff;box-shadow:0 24px 70px rgba(0,0,0,.4);}
   .pv-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;background:var(--teal-deep);color:#fff;font-size:14px;}
   .pv-bar a{margin-right:14px;color:#fff;font-size:12.5px;text-decoration:underline;}
   .pv-bar button{border:0;background:none;color:#fff;font-size:26px;line-height:1;cursor:pointer;}
-  .pv iframe{flex:1;width:100%;border:0;}
+  .pv iframe{flex:1;min-height:0;width:100%;border:0;background:#e9eeee;}
 </style>
   <link rel="stylesheet" href="pro.css">
-  <link rel="stylesheet" href="pro-header.css">
+  <link rel="stylesheet" href="pro-header.css?v=2">
 </head>
 <body>
 
@@ -144,7 +144,7 @@
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
       <a href="index.html">Portfolio</a>
-      <a href="applications.html">Applications</a>
+      <a href="applications.html" class="active" aria-current="page">Applications</a>
       <a href="actualites.html#articles">Articles</a>
       <a href="actualites.html#piliers">Prévention</a>
       <a href="actualites.html#newsletter">Newsletter</a>
@@ -293,23 +293,26 @@
 })();
 </script>
 
-  <script src="header-lang.js" defer></script>
-<div class="pv" id="pitchViewer" hidden role="dialog" aria-modal="true" aria-label="Visionneuse du pitch"><div class="pv-box"><div class="pv-bar"><strong class="pv-title"></strong><span><a class="pv-download" href="#" download>Télécharger</a><button type="button" data-pv-close aria-label="Fermer">×</button></span></div><iframe title="Pitch PowerPoint" allowfullscreen></iframe></div></div>
+  <script src="header-lang.js?v=2" defer></script>
+<div class="pv" id="pitchViewer" hidden role="dialog" aria-modal="true" aria-label="Visionneuse du pitch"><div class="pv-box"><div class="pv-bar"><strong class="pv-title"></strong><span><a class="pv-download" href="#" download>Télécharger le PowerPoint</a><button type="button" data-pv-close aria-label="Fermer">×</button></span></div><iframe title="Pitch" allowfullscreen></iframe></div></div>
 <script>
 (function () {
   var modal = document.getElementById('pitchViewer'), frame = modal.querySelector('iframe'), title = modal.querySelector('.pv-title'), dl = modal.querySelector('.pv-download');
-  // La visionneuse Office en ligne doit pouvoir joindre le fichier : uniquement sur le site publié.
-  function canEmbed() { return /^https?:$/.test(location.protocol) && !/^(localhost|127\.|192\.168\.)/.test(location.hostname); }
   function closeViewer() { modal.hidden = true; frame.src = 'about:blank'; document.body.style.overflow = ''; }
+  // Clic sur un aperçu : affiche le PDF du pitch (même nom que le .pptx) dans la page ;
+  // si le PDF est introuvable, on retombe sur le comportement d'origine (ouverture du .pptx).
   document.addEventListener('click', function (e) {
     var a = e.target.closest && e.target.closest('a.pitch-preview');
-    if (!a || !canEmbed()) return;
+    if (!a) return;
     e.preventDefault();
-    var url = new URL(a.getAttribute('href'), location.href).href;
-    title.textContent = (a.getAttribute('aria-label') || '').replace('Ouvrir le pitch PowerPoint ', 'Pitch — ');
-    dl.href = url;
-    frame.src = 'https://view.officeapps.live.com/op/embed.aspx?src=' + encodeURIComponent(url);
-    modal.hidden = false; document.body.style.overflow = 'hidden';
+    var pptx = new URL(a.getAttribute('href'), location.href).href;
+    var pdf = pptx.replace(/\.pptx$/i, '.pdf');
+    fetch(pdf, { method: 'HEAD' }).then(function (r) {
+      if (!r.ok) throw new Error('pdf absent');
+      title.textContent = (a.getAttribute('aria-label') || '').replace('Ouvrir le pitch PowerPoint ', 'Pitch — ');
+      dl.href = pptx; frame.src = pdf + '#view=FitH';
+      modal.hidden = false; document.body.style.overflow = 'hidden';
+    }).catch(function () { window.location.href = pptx; });
   });
   modal.addEventListener('click', function (e) { if (e.target === modal || (e.target.closest && e.target.closest('[data-pv-close]'))) closeViewer(); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !modal.hidden) closeViewer(); });

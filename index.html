@@ -467,7 +467,7 @@
   [dir="rtl"] .stat-label{ direction:rtl; }
 </style>
   <link rel="stylesheet" href="pro.css">
-  <link rel="stylesheet" href="pro-header.css">
+  <link rel="stylesheet" href="pro-header.css?v=2">
   <link rel="stylesheet" href="visit-counter.css">
 </head>
 <body>
@@ -482,7 +482,7 @@
       </span>
     </a>
     <nav class="site-nav" aria-label="Navigation principale">
-      <a href="index.html">Portfolio</a>
+      <a href="index.html" class="active" aria-current="page">Portfolio</a>
       <a href="applications.html">Applications</a>
       <a href="actualites.html#articles">Articles</a>
       <a href="actualites.html#piliers">Prévention</a>
@@ -851,7 +851,7 @@ const _renderSiteLang = render;
 render = function(lang){ _renderSiteLang(lang); window.dispatchEvent(new Event('site-language-changed')); };
 </script>
 
-  <script src="header-lang.js" defer></script>
+  <script src="header-lang.js?v=2" defer></script>
   <script src="visit-counter.js" defer></script>
 <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script><script>if(window.netlifyIdentity){window.netlifyIdentity.on("init",function(u){if(!u){window.netlifyIdentity.on("login",function(){document.location.href="/admin/";});}});}</script>
 </body>
